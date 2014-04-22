@@ -119,11 +119,15 @@ static const uint32_t playerCategory = 0x1 << 1;
     _clickCanResume = false;
 }
 
+/**
+ * Show a text dialog.
+ */
 -(void)showDialog:(NSString*)text
 {
     // Build shape.
     SKShapeNode *dialogBackground = [[SKShapeNode alloc] init];
     CGRect brickBoundary = CGRectMake(0.0, 0.0, 960.0, 100.0);
+    dialogBackground.name = @"dialogBackground";
     dialogBackground.position = CGPointMake(0.0, 440.0);
     dialogBackground.path = CGPathCreateWithRect(brickBoundary, nil);
     dialogBackground.fillColor = [SKColor brownColor];
@@ -132,6 +136,7 @@ static const uint32_t playerCategory = 0x1 << 1;
     
     // Add text.
     SKLabelNode *dialogText = [SKLabelNode labelNodeWithFontNamed:@"Times"];
+    dialogText.name = @"dialogText";
     dialogText.text = text;
     dialogText.fontSize = 11;
     dialogText.fontColor = [SKColor colorWithRed:0.15 green:0.15 blue:0.3 alpha:1.0];
@@ -144,6 +149,18 @@ static const uint32_t playerCategory = 0x1 << 1;
     
     // Pause.
     [self pause];
+}
+
+/**
+ * Clear the current text dialog.
+ */
+-(void)clearDialog
+{
+    SKNode *dialogBackground = [self childNodeWithName:@"dialogBackground"];
+    [dialogBackground removeFromParent];
+    
+    SKNode *dialogText = [self childNodeWithName:@"dialogText"];
+    [dialogText removeFromParent];
 }
 
 /**
@@ -189,6 +206,7 @@ static const uint32_t playerCategory = 0x1 << 1;
     // If the scene is currently paused and _clickCanResume, clear any dialog's and
     // resume the scene.
     if (self.scene.view.paused & _clickCanResume) {
+        [self clearDialog];
         [self resume];
         return;
     }
