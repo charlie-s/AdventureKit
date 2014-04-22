@@ -6,6 +6,8 @@
 
 @interface AKScene : SKScene <SKPhysicsContactDelegate>
 
+-(id)loadSceneNumber:(int)number;
+
 @property (nonatomic) AKSprite *hero;
 
 @property NSInteger *cursorWait;

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>action</key>
+	<dict>
+		<key>touch</key>
+		<string>It feels like a hallway.</string>
+		<key>look</key>
+		<string>This is a hallway.</string>
+	</dict>
+	<key>name</key>
+	<string>Hallway</string>
+</dict>
+</plist>
