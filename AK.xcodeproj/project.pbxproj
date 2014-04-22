@@ -24,10 +24,10 @@
 		CB84BE2E1906D2E100169C4F /* touch.png in Resources */ = {isa = PBXBuildFile; fileRef = CB84BE291906D2E100169C4F /* touch.png */; };
 		CB84BE2F1906D2E100169C4F /* wait.png in Resources */ = {isa = PBXBuildFile; fileRef = CB84BE2A1906D2E100169C4F /* wait.png */; };
 		CB84BE301906D2E100169C4F /* walk.png in Resources */ = {isa = PBXBuildFile; fileRef = CB84BE2B1906D2E100169C4F /* walk.png */; };
+		CB84BE321906D8DC00169C4F /* 1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CB84BE311906D8DC00169C4F /* 1.mp3 */; };
 		CBFAA8011906B20E003524B1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CBFAA7FF1906B20E003524B1 /* InfoPlist.strings */; };
 		CBFAA8041906B219003524B1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CBFAA8021906B219003524B1 /* InfoPlist.strings */; };
 		CBFAA8051906B25D003524B1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CB5AAF421900616E004CA461 /* main.m */; };
-		CBFAA8211906B77A003524B1 /* 001.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CBFAA8121906B77A003524B1 /* 001.mp3 */; };
 		CBFAA8231906B77A003524B1 /* down-still.gif in Resources */ = {isa = PBXBuildFile; fileRef = CBFAA8171906B77A003524B1 /* down-still.gif */; };
 		CBFAA8241906B77A003524B1 /* left-still.gif in Resources */ = {isa = PBXBuildFile; fileRef = CBFAA8181906B77A003524B1 /* left-still.gif */; };
 		CBFAA8251906B77A003524B1 /* right-still.gif in Resources */ = {isa = PBXBuildFile; fileRef = CBFAA8191906B77A003524B1 /* right-still.gif */; };
@@ -75,10 +75,10 @@
 		CB84BE291906D2E100169C4F /* touch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = touch.png; sourceTree = "<group>"; };
 		CB84BE2A1906D2E100169C4F /* wait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wait.png; sourceTree = "<group>"; };
 		CB84BE2B1906D2E100169C4F /* walk.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = walk.png; sourceTree = "<group>"; };
+		CB84BE311906D8DC00169C4F /* 1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 1.mp3; sourceTree = "<group>"; };
 		CBFAA7FD1906ADC1003524B1 /* AK-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "AK-Info.plist"; path = "AK/AK-Info.plist"; sourceTree = SOURCE_ROOT; };
 		CBFAA8001906B20E003524B1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CBFAA8031906B219003524B1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		CBFAA8121906B77A003524B1 /* 001.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 001.mp3; sourceTree = "<group>"; };
 		CBFAA8171906B77A003524B1 /* down-still.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "down-still.gif"; sourceTree = "<group>"; };
 		CBFAA8181906B77A003524B1 /* left-still.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "left-still.gif"; sourceTree = "<group>"; };
 		CBFAA8191906B77A003524B1 /* right-still.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "right-still.gif"; sourceTree = "<group>"; };
@@ -228,7 +228,7 @@
 		CBFAA8111906B77A003524B1 /* music */ = {
 			isa = PBXGroup;
 			children = (
-				CBFAA8121906B77A003524B1 /* 001.mp3 */,
+				CB84BE311906D8DC00169C4F /* 1.mp3 */,
 			);
 			path = music;
 			sourceTree = "<group>";
@@ -340,9 +340,9 @@
 			files = (
 				CB84BE251906CAD100169C4F /* 1.plist in Resources */,
 				CBFAA8271906B77A003524B1 /* walk-right.atlas in Resources */,
-				CBFAA8211906B77A003524B1 /* 001.mp3 in Resources */,
 				CB84BE2D1906D2E100169C4F /* look.png in Resources */,
 				CBFAA8011906B20E003524B1 /* InfoPlist.strings in Resources */,
+				CB84BE321906D8DC00169C4F /* 1.mp3 in Resources */,
 				CBFAA8241906B77A003524B1 /* left-still.gif in Resources */,
 				CBFAA8261906B77A003524B1 /* walk-left.atlas in Resources */,
 				CB5AAF531900616E004CA461 /* Images.xcassets in Resources */,

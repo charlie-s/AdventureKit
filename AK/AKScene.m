@@ -25,20 +25,9 @@ static const uint32_t playerCategory = 0x1 << 1;
     NSDictionary *_plist;
 }
 
--(id)loadSceneNumber:(int)number
-{
-    // Load scene plist.
-    NSString * path = [[NSBundle mainBundle] pathForResource:@"001" ofType:@"plist"];
-    _plist = [NSDictionary dictionaryWithContentsOfFile:path];
-    
-    // Set background, centered.
-    SKSpriteNode *bgImage = [SKSpriteNode spriteNodeWithImageNamed:@"001.png"];
-    bgImage.position = CGPointMake(self.size.width/2, self.size.height/2);
-    [self addChild:bgImage];
-    
-    return self;
-}
-
+/**
+ * Override initWithSize
+ */
 -(id)initWithSize:(CGSize)size
 {
     if (self = [super initWithSize:size])
@@ -51,7 +40,7 @@ static const uint32_t playerCategory = 0x1 << 1;
         [self loadSceneNumber:_currentScreen];
         
         // Load music
-        //        [self runAction:[SKAction playSoundFileNamed:@"001.mp3" waitForCompletion:NO]];
+        // [self runAction:[SKAction playSoundFileNamed:@"1.mp3" waitForCompletion:NO]];
         
         /**
          * Set hero sprite.
@@ -66,6 +55,7 @@ static const uint32_t playerCategory = 0x1 << 1;
          */
         SKSpriteNode *block = [SKSpriteNode spriteNodeWithColor:[SKColor redColor] size:CGSizeMake(300, 300)];
         block.position = CGPointMake(200, 200);
+        block.name = @"block";
         [self addChild:block];
         
         block.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:block.size];
@@ -79,29 +69,47 @@ static const uint32_t playerCategory = 0x1 << 1;
 }
 
 /**
+ * Load the given scene number.
+ */
+-(id)loadSceneNumber:(int)number
+{
+    // Load scene plist.
+    NSString * path = [[NSBundle mainBundle] pathForResource:@"001" ofType:@"plist"];
+    _plist = [NSDictionary dictionaryWithContentsOfFile:path];
+    
+    // Set background, centered.
+    SKSpriteNode *bgImage = [SKSpriteNode spriteNodeWithImageNamed:@"001.png"];
+    bgImage.position = CGPointMake(self.size.width/2, self.size.height/2);
+    [self addChild:bgImage];
+    
+    return self;
+}
+
+/**
  * Collision detected.
  */
 -(void)didBeginContact:(SKPhysicsContact*)contact
 {
     NSLog(@"contact detected!");
     
-    //    SKPhysicsBody *firstBody;
-    //    SKPhysicsBody *secondBody;
+    SKPhysicsBody *firstBody;
+    SKPhysicsBody *secondBody;
     
-    //    if (contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask)
-    //    {
-    //        firstBody = contact.bodyA;
-    //        secondBody = contact.bodyB;
-    //    }
-    //    else
-    //    {
-    //        firstBody = contact.bodyB;
-    //        secondBody = contact.bodyA;
-    //    }
+    if (contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask) {
+        firstBody = contact.bodyA;
+        secondBody = contact.bodyB;
+    } else {
+        firstBody = contact.bodyB;
+        secondBody = contact.bodyA;
+    }
     
-    //Your first body is the block, secondbody is the player.
-    //Implement relevant code here.
-    
+    // Stop character.
+    if ([firstBody.node.name isEqual: @"sprite"]) {
+        [firstBody.node removeAllActions];
+    }
+    if ([secondBody.node.name isEqual: @"sprite"]) {
+        [secondBody.node removeAllActions];
+    }
 }
 
 -(void)pause
