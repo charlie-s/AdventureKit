@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CB24860E1908482E00B573BF /* _block.png in Resources */ = {isa = PBXBuildFile; fileRef = CB24860D1908482D00B573BF /* _block.png */; };
 		CB5AAF351900616E004CA461 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB5AAF341900616E004CA461 /* Cocoa.framework */; };
 		CB5AAF371900616E004CA461 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB5AAF361900616E004CA461 /* SpriteKit.framework */; };
 		CB5AAF491900616E004CA461 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB5AAF481900616E004CA461 /* MainMenu.xib */; };
@@ -25,7 +26,20 @@
 		CB84BE2F1906D2E100169C4F /* wait.png in Resources */ = {isa = PBXBuildFile; fileRef = CB84BE2A1906D2E100169C4F /* wait.png */; };
 		CB84BE301906D2E100169C4F /* walk.png in Resources */ = {isa = PBXBuildFile; fileRef = CB84BE2B1906D2E100169C4F /* walk.png */; };
 		CB84BE321906D8DC00169C4F /* 1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CB84BE311906D8DC00169C4F /* 1.mp3 */; };
-		CB84BE341908233100169C4F /* HUMAStarPathfinder in Resources */ = {isa = PBXBuildFile; fileRef = CB84BE331908233100169C4F /* HUMAStarPathfinder */; };
+		CB84BE3A19082A4500169C4F /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CB84BE3919082A4500169C4F /* libz.dylib */; };
+		CB84BE3C19082CEE00169C4F /* 1.tmx in Resources */ = {isa = PBXBuildFile; fileRef = CB84BE3B19082CEE00169C4F /* 1.tmx */; };
+		CB84BE3F19082DD900169C4F /* JSTileMap.h in Resources */ = {isa = PBXBuildFile; fileRef = CB84BE3D19082DD900169C4F /* JSTileMap.h */; };
+		CB84BE4019082DD900169C4F /* JSTileMap.m in Resources */ = {isa = PBXBuildFile; fileRef = CB84BE3E19082DD900169C4F /* JSTileMap.m */; };
+		CB84BE4319082DE700169C4F /* LFCGzipUtility.h in Resources */ = {isa = PBXBuildFile; fileRef = CB84BE4119082DE700169C4F /* LFCGzipUtility.h */; };
+		CB84BE4419082DE700169C4F /* LFCGzipUtility.m in Resources */ = {isa = PBXBuildFile; fileRef = CB84BE4219082DE700169C4F /* LFCGzipUtility.m */; };
+		CB84BE4919082DF300169C4F /* HUMAStarPathfinder.h in Resources */ = {isa = PBXBuildFile; fileRef = CB84BE4519082DF300169C4F /* HUMAStarPathfinder.h */; };
+		CB84BE4A19082DF300169C4F /* HUMAStarPathfinder.m in Resources */ = {isa = PBXBuildFile; fileRef = CB84BE4619082DF300169C4F /* HUMAStarPathfinder.m */; };
+		CB84BE4B19082DF300169C4F /* HUMAStarPathfinderNode.h in Resources */ = {isa = PBXBuildFile; fileRef = CB84BE4719082DF300169C4F /* HUMAStarPathfinderNode.h */; };
+		CB84BE4C19082DF300169C4F /* HUMAStarPathfinderNode.m in Resources */ = {isa = PBXBuildFile; fileRef = CB84BE4819082DF300169C4F /* HUMAStarPathfinderNode.m */; };
+		CB84BE4D19082FB800169C4F /* HUMAStarPathfinder.m in Sources */ = {isa = PBXBuildFile; fileRef = CB84BE4619082DF300169C4F /* HUMAStarPathfinder.m */; };
+		CB84BE4E19082FB800169C4F /* HUMAStarPathfinderNode.m in Sources */ = {isa = PBXBuildFile; fileRef = CB84BE4819082DF300169C4F /* HUMAStarPathfinderNode.m */; };
+		CB84BE4F19082FB800169C4F /* LFCGzipUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = CB84BE4219082DE700169C4F /* LFCGzipUtility.m */; };
+		CB84BE5019082FB800169C4F /* JSTileMap.m in Sources */ = {isa = PBXBuildFile; fileRef = CB84BE3E19082DD900169C4F /* JSTileMap.m */; };
 		CBFAA8011906B20E003524B1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CBFAA7FF1906B20E003524B1 /* InfoPlist.strings */; };
 		CBFAA8041906B219003524B1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CBFAA8021906B219003524B1 /* InfoPlist.strings */; };
 		CBFAA8051906B25D003524B1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CB5AAF421900616E004CA461 /* main.m */; };
@@ -49,6 +63,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CB24860D1908482D00B573BF /* _block.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = _block.png; sourceTree = "<group>"; };
 		CB5AAF311900616E004CA461 /* AK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AK.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB5AAF341900616E004CA461 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		CB5AAF361900616E004CA461 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
@@ -77,7 +92,16 @@
 		CB84BE2A1906D2E100169C4F /* wait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wait.png; sourceTree = "<group>"; };
 		CB84BE2B1906D2E100169C4F /* walk.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = walk.png; sourceTree = "<group>"; };
 		CB84BE311906D8DC00169C4F /* 1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 1.mp3; sourceTree = "<group>"; };
-		CB84BE331908233100169C4F /* HUMAStarPathfinder */ = {isa = PBXFileReference; lastKnownFileType = folder; path = HUMAStarPathfinder; sourceTree = "<group>"; };
+		CB84BE3919082A4500169C4F /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		CB84BE3B19082CEE00169C4F /* 1.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = 1.tmx; sourceTree = "<group>"; };
+		CB84BE3D19082DD900169C4F /* JSTileMap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = JSTileMap.h; path = JSTileMap/JSTileMap.h; sourceTree = "<group>"; };
+		CB84BE3E19082DD900169C4F /* JSTileMap.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = JSTileMap.m; path = JSTileMap/JSTileMap.m; sourceTree = "<group>"; };
+		CB84BE4119082DE700169C4F /* LFCGzipUtility.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LFCGzipUtility.h; path = LFCGzipUtility/LFCGzipUtility.h; sourceTree = "<group>"; };
+		CB84BE4219082DE700169C4F /* LFCGzipUtility.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = LFCGzipUtility.m; path = LFCGzipUtility/LFCGzipUtility.m; sourceTree = "<group>"; };
+		CB84BE4519082DF300169C4F /* HUMAStarPathfinder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HUMAStarPathfinder.h; path = HUMAStarPathfinder/HUMAStarPathfinder.h; sourceTree = "<group>"; };
+		CB84BE4619082DF300169C4F /* HUMAStarPathfinder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HUMAStarPathfinder.m; path = HUMAStarPathfinder/HUMAStarPathfinder.m; sourceTree = "<group>"; };
+		CB84BE4719082DF300169C4F /* HUMAStarPathfinderNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HUMAStarPathfinderNode.h; path = HUMAStarPathfinder/HUMAStarPathfinderNode.h; sourceTree = "<group>"; };
+		CB84BE4819082DF300169C4F /* HUMAStarPathfinderNode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HUMAStarPathfinderNode.m; path = HUMAStarPathfinder/HUMAStarPathfinderNode.m; sourceTree = "<group>"; };
 		CBFAA7FD1906ADC1003524B1 /* AK-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "AK-Info.plist"; path = "AK/AK-Info.plist"; sourceTree = SOURCE_ROOT; };
 		CBFAA8001906B20E003524B1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CBFAA8031906B219003524B1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -97,6 +121,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB84BE3A19082A4500169C4F /* libz.dylib in Frameworks */,
 				CB5AAF371900616E004CA461 /* SpriteKit.framework in Frameworks */,
 				CB5AAF351900616E004CA461 /* Cocoa.framework in Frameworks */,
 			);
@@ -136,6 +161,7 @@
 		CB5AAF331900616E004CA461 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CB84BE3919082A4500169C4F /* libz.dylib */,
 				CB5AAF341900616E004CA461 /* Cocoa.framework */,
 				CB5AAF361900616E004CA461 /* SpriteKit.framework */,
 				CB5AAF591900616E004CA461 /* XCTest.framework */,
@@ -157,7 +183,14 @@
 		CB5AAF3C1900616E004CA461 /* AK */ = {
 			isa = PBXGroup;
 			children = (
-				CB84BE331908233100169C4F /* HUMAStarPathfinder */,
+				CB84BE4519082DF300169C4F /* HUMAStarPathfinder.h */,
+				CB84BE4619082DF300169C4F /* HUMAStarPathfinder.m */,
+				CB84BE4719082DF300169C4F /* HUMAStarPathfinderNode.h */,
+				CB84BE4819082DF300169C4F /* HUMAStarPathfinderNode.m */,
+				CB84BE4119082DE700169C4F /* LFCGzipUtility.h */,
+				CB84BE4219082DE700169C4F /* LFCGzipUtility.m */,
+				CB84BE3D19082DD900169C4F /* JSTileMap.h */,
+				CB84BE3E19082DD900169C4F /* JSTileMap.m */,
 				CBFAA80A1906B779003524B1 /* asset */,
 				CB5AAF481900616E004CA461 /* MainMenu.xib */,
 				CBFAA8281906BAA6003524B1 /* AKInventory.h */,
@@ -239,6 +272,8 @@
 		CBFAA8131906B77A003524B1 /* scene */ = {
 			isa = PBXGroup;
 			children = (
+				CB24860D1908482D00B573BF /* _block.png */,
+				CB84BE3B19082CEE00169C4F /* 1.tmx */,
 				CB84BE231906CAD100169C4F /* 1.plist */,
 				CB84BE241906CAD100169C4F /* 1.png */,
 			);
@@ -341,23 +376,32 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB84BE4419082DE700169C4F /* LFCGzipUtility.m in Resources */,
 				CB84BE251906CAD100169C4F /* 1.plist in Resources */,
 				CBFAA8271906B77A003524B1 /* walk-right.atlas in Resources */,
 				CB84BE2D1906D2E100169C4F /* look.png in Resources */,
 				CBFAA8011906B20E003524B1 /* InfoPlist.strings in Resources */,
+				CB84BE3F19082DD900169C4F /* JSTileMap.h in Resources */,
 				CB84BE321906D8DC00169C4F /* 1.mp3 in Resources */,
 				CBFAA8241906B77A003524B1 /* left-still.gif in Resources */,
+				CB84BE4019082DD900169C4F /* JSTileMap.m in Resources */,
+				CB84BE4A19082DF300169C4F /* HUMAStarPathfinder.m in Resources */,
+				CB84BE4319082DE700169C4F /* LFCGzipUtility.h in Resources */,
+				CB84BE4919082DF300169C4F /* HUMAStarPathfinder.h in Resources */,
 				CBFAA8261906B77A003524B1 /* walk-left.atlas in Resources */,
+				CB84BE4B19082DF300169C4F /* HUMAStarPathfinderNode.h in Resources */,
 				CB5AAF531900616E004CA461 /* Images.xcassets in Resources */,
-				CB84BE341908233100169C4F /* HUMAStarPathfinder in Resources */,
 				CB84BE261906CAD100169C4F /* 1.png in Resources */,
 				CBFAA8251906B77A003524B1 /* right-still.gif in Resources */,
 				CB84BE301906D2E100169C4F /* walk.png in Resources */,
 				CB5AAF491900616E004CA461 /* MainMenu.xib in Resources */,
 				CB84BE2F1906D2E100169C4F /* wait.png in Resources */,
 				CBFAA8231906B77A003524B1 /* down-still.gif in Resources */,
+				CB84BE3C19082CEE00169C4F /* 1.tmx in Resources */,
 				CB84BE2C1906D2E100169C4F /* default.png in Resources */,
 				CB84BE2E1906D2E100169C4F /* touch.png in Resources */,
+				CB84BE4C19082DF300169C4F /* HUMAStarPathfinderNode.m in Resources */,
+				CB24860E1908482E00B573BF /* _block.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -376,6 +420,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB84BE4D19082FB800169C4F /* HUMAStarPathfinder.m in Sources */,
+				CB84BE4E19082FB800169C4F /* HUMAStarPathfinderNode.m in Sources */,
+				CB84BE4F19082FB800169C4F /* LFCGzipUtility.m in Sources */,
+				CB84BE5019082FB800169C4F /* JSTileMap.m in Sources */,
 				CBFAA82A1906BAA6003524B1 /* AKInventory.m in Sources */,
 				CBFAA8051906B25D003524B1 /* main.m in Sources */,
 				CB5AAF4E1900616E004CA461 /* AKAppDelegate.m in Sources */,

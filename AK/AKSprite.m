@@ -1,11 +1,6 @@
 
 #import "AKSprite.h"
 
-static const uint32_t playerCategory = 0x1 << 0;
-static const uint32_t blockCategory = 0x1 << 1;
-static const uint32_t playerFeetCategory = 0x1 << 2;
-static const uint32_t blockFeetCategory = 0x1 << 3;
-
 @implementation AKSprite
 {
     SKSpriteNode *_sprite;
@@ -35,6 +30,22 @@ static const uint32_t blockFeetCategory = 0x1 << 3;
     }
     
     return self;
+}
+
+/**
+ * Get the current sprite size.
+ */
+-(CGSize)getSize
+{
+    return _sprite.size;
+}
+
+/**
+ * Get the current sprite position.
+ */
+-(CGPoint)getPosition
+{
+    return _sprite.position;
 }
 
 /**

@@ -3,8 +3,12 @@
 #import <AVFoundation/AVFoundation.h>
 
 #import "AKSprite.h"
+#import "JSTileMap.h"
+#import "HUMAStarPathfinder.h"
 
-@interface AKScene : SKScene
+@class JSTileMap;
+
+@interface AKScene : SKScene <HUMAStarPathfinderDelegate>
 
 -(id)loadSceneNumber:(int)number;
 
@@ -12,5 +16,8 @@
 
 @property NSInteger *cursorWait;
 @property NSString *cursorActiveImage;
+
+@property (strong, nonatomic) JSTileMap* tileMap;
+@property (nonatomic, strong) HUMAStarPathfinder *pathfinder;
 
 @end

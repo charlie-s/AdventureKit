@@ -1,10 +1,7 @@
 
 #import "AKScene.h"
-
-static const uint32_t playerCategory = 0x1 << 0;
-static const uint32_t blockCategory = 0x1 << 1;
-static const uint32_t playerFeetCategory = 0x1 << 2;
-static const uint32_t blockFeetCategory = 0x1 << 3;
+#import "JSTileMap.h"
+#import "HUMAStarPathfinder.h"
 
 /**
  * Category of SKView to invoke rightMouseDown event. This is normally not 
@@ -26,9 +23,54 @@ static const uint32_t blockFeetCategory = 0x1 << 3;
     bool _clickCanResume;
 
     NSDictionary *_plist;
-    
-    SKShapeNode *_boundary1;
 }
+
+
+
+
+
+- (BOOL)pathfinder:(HUMAStarPathfinder *)pathFinder canWalkToNodeAtTileLocation:(CGPoint)tileLocation {
+
+//    TMXLayer *ourLayer = [_tileMap layerNamed:@"block"];
+//    SKSpriteNode *tile = [ourLayer tileAt:tileLocation];
+//    NSLog(@"%@", ourLayer);
+    
+//    NSLog(@"CGPoint X:%f", tileLocation.x);
+//    NSLog(@"CGPoint Y:%f", tileLocation.y);
+//	CCTMXLayer *meta = [self.tileMap layerNamed:@"Meta"];
+//	uint8_t gid = [meta tileGIDAt:tileLocation];
+//    
+//	BOOL walkable = YES;
+//    
+//	if (gid) {
+//		NSDictionary *properties = [self.tileMap propertiesForGID:gid];
+//		walkable = [properties[@"walkable"] boolValue];
+//	}
+//    
+//	return walkable;
+    return true;
+}
+
+- (NSUInteger)pathfinder:(HUMAStarPathfinder *)pathfinder costForNodeAtTileLocation:(CGPoint)tileLocation {
+//	CCTMXLayer *ground = [self.tileMap layerNamed:@"Ground"];
+//	uint32_t gid = [ground tileGIDAt:tileLocation];
+//    
+//	NSUInteger cost = pathfinder.baseMovementCost;
+//    
+//	if (gid) {
+//		NSDictionary *properties = [self.tileMap propertiesForGID:gid];
+//		if (properties[@"cost"]) {
+//			cost = [properties[@"cost"] integerValue];
+//		}
+//	}
+//    
+//	return cost;
+    return 10;
+}
+
+
+
+
 
 /**
  * Override initWithSize
@@ -41,9 +83,7 @@ static const uint32_t blockFeetCategory = 0x1 << 3;
         _currentScreen = 1;
         [self loadSceneNumber:_currentScreen];
         
-        /**
-         * Set hero sprite.
-         */
+        // Set hero sprite.
         self.hero = [[AKSprite alloc] init];
         [self.hero setDirectionFacing:@"left"];
         [self.hero moveTo:CGPointMake(600, 200)];
@@ -59,35 +99,24 @@ static const uint32_t blockFeetCategory = 0x1 << 3;
 -(id)loadSceneNumber:(int)number
 {
     // Load scene plist.
-    NSString * path = [[NSBundle mainBundle] pathForResource:@"001" ofType:@"plist"];
+    NSString * path = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%i", number] ofType:@"plist"];
     _plist = [NSDictionary dictionaryWithContentsOfFile:path];
     
     // Load music
     // [self runAction:[SKAction playSoundFileNamed:@"1.mp3" waitForCompletion:NO]];
     
     // Set background, centered.
-    SKSpriteNode *bgImage = [SKSpriteNode spriteNodeWithImageNamed:@"001.png"];
-    bgImage.position = CGPointMake(self.size.width/2, self.size.height/2);
-    [self addChild:bgImage];
+//    SKSpriteNode *bgImage = [SKSpriteNode spriteNodeWithImageNamed:[NSString stringWithFormat:@"%i.png", number]];
+//    bgImage.position = CGPointMake(self.size.width/2, self.size.height/2);
+//    [self addChild:bgImage];
     
-    // Draw boundaries.
-    _boundary1 = [SKShapeNode node];
-    CGMutablePathRef pathToDraw = CGPathCreateMutable();
-    CGPathMoveToPoint(pathToDraw, NULL, 155, 0);
-    CGPathAddLineToPoint(pathToDraw, NULL, 190, 90);
-    CGPathAddLineToPoint(pathToDraw, NULL, 187, 165);
-    CGPathAddLineToPoint(pathToDraw, NULL, 175, 175);
-    CGPathAddLineToPoint(pathToDraw, NULL, 175, 366);
-    CGPathAddLineToPoint(pathToDraw, NULL, 201, 390);
-    CGPathAddLineToPoint(pathToDraw, NULL, 200, 176);
-    CGPathAddLineToPoint(pathToDraw, NULL, 238, 236);
-    CGPathAddLineToPoint(pathToDraw, NULL, 332, 238);
-    CGPathAddLineToPoint(pathToDraw, NULL, 359, 251);
-    CGPathAddLineToPoint(pathToDraw, NULL, 600, 251);
-    _boundary1.path = pathToDraw;
-    [_boundary1 setStrokeColor:[SKColor blueColor]];
-    [self addChild:_boundary1];
-
+    // Load the tilemap.
+    self.tileMap = [JSTileMap mapNamed:[NSString stringWithFormat:@"%i.tmx", number]];
+    if (self.tileMap) [self addChild:self.tileMap];
+    
+    // Initialize HUMAStarPathfinder.
+    self.pathfinder = [HUMAStarPathfinder pathfinderWithTileMapSize:self.tileMap.mapSize tileSize:self.tileMap.tileSize delegate:self];
+    
     return self;
 }
 
@@ -130,10 +159,11 @@ static const uint32_t blockFeetCategory = 0x1 << 3;
     // Add text.
     SKLabelNode *dialogText = [SKLabelNode labelNodeWithFontNamed:@"Times"];
     dialogText.name = @"dialogText";
+    dialogText.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeLeft;
     dialogText.text = text;
-    dialogText.fontSize = 11;
-    dialogText.fontColor = [SKColor colorWithRed:0.15 green:0.15 blue:0.3 alpha:1.0];
-    dialogText.position = CGPointMake(150.0, 250.0);
+    dialogText.fontSize = 30;
+    dialogText.fontColor = [SKColor blackColor];
+    dialogText.position = CGPointMake(10.0, 450.0);
 
     [self addChild:dialogText];
     
@@ -191,6 +221,13 @@ static const uint32_t blockFeetCategory = 0x1 << 3;
     // Get the point clicked.
     CGPoint location = [theEvent locationInNode:self];
     
+    // If the current active cursor is walk (1), calculate the fastest path using
+    // HUMAStarPathfinder
+    if (_activeCursor == 1) {
+        NSArray *walkPath = [self.pathfinder findPathFromStart:self.hero.getPosition toTarget:location];
+//        NSLog(@"%@", walkPath);
+    }
+    
     // Set proper action depending on current active cursor.
     switch (_activeCursor) {
         case 1:
@@ -218,16 +255,7 @@ static const uint32_t blockFeetCategory = 0x1 << 3;
 }
 
 -(void)update:(CFTimeInterval)currentTime
-{
-    if (CGRectIntersectsRect(skView.frame, node.frame) {
-
-        NSLog(@"Intersection");
-    }
-        
-    if ([self.hero intersectsNode:_boundary1]) {
-
-    }
-    
+{    
     // Determine current cursor image depending upon current _activeCursor.
     switch (_activeCursor) {
         case 1:
