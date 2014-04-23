@@ -1,8 +1,10 @@
 
 #import "AKScene.h"
 
-static const uint32_t blockCategory = 0x1 << 0;
-static const uint32_t playerCategory = 0x1 << 1;
+static const uint32_t playerCategory = 0x1 << 0;
+static const uint32_t blockCategory = 0x1 << 1;
+static const uint32_t playerFeetCategory = 0x1 << 2;
+static const uint32_t blockFeetCategory = 0x1 << 3;
 
 /**
  * Category of SKView to invoke rightMouseDown event. This is normally not 
@@ -10,7 +12,8 @@ static const uint32_t playerCategory = 0x1 << 1;
  * here and then invoke our scene's rightMouseDown method.
  */
 @implementation SKView (Right_Mouse)
--(void)rightMouseDown:(NSEvent *)theEvent {
+-(void)rightMouseDown:(NSEvent *)theEvent
+{
     [self.scene rightMouseDown:theEvent];
 }
 @end
@@ -23,6 +26,8 @@ static const uint32_t playerCategory = 0x1 << 1;
     bool _clickCanResume;
 
     NSDictionary *_plist;
+    
+    SKShapeNode *_boundary1;
 }
 
 /**
@@ -32,15 +37,9 @@ static const uint32_t playerCategory = 0x1 << 1;
 {
     if (self = [super initWithSize:size])
     {
-        self.physicsWorld.gravity = CGVectorMake(0,0);
-        self.physicsWorld.contactDelegate = self;
-        
         // Load the current screen.
         _currentScreen = 1;
         [self loadSceneNumber:_currentScreen];
-        
-        // Load music
-        // [self runAction:[SKAction playSoundFileNamed:@"1.mp3" waitForCompletion:NO]];
         
         /**
          * Set hero sprite.
@@ -49,20 +48,6 @@ static const uint32_t playerCategory = 0x1 << 1;
         [self.hero setDirectionFacing:@"left"];
         [self.hero moveTo:CGPointMake(600, 200)];
         [self addChild:self.hero];
-        
-        /**
-         * Set a block.
-         */
-        SKSpriteNode *block = [SKSpriteNode spriteNodeWithColor:[SKColor redColor] size:CGSizeMake(300, 300)];
-        block.position = CGPointMake(200, 200);
-        block.name = @"block";
-        [self addChild:block];
-        
-        block.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:block.size];
-        block.physicsBody.dynamic = NO;
-        block.physicsBody.categoryBitMask = blockCategory;
-        block.physicsBody.collisionBitMask = 0;
-        block.physicsBody.contactTestBitMask = playerCategory;
     }
     
     return self;
@@ -77,41 +62,38 @@ static const uint32_t playerCategory = 0x1 << 1;
     NSString * path = [[NSBundle mainBundle] pathForResource:@"001" ofType:@"plist"];
     _plist = [NSDictionary dictionaryWithContentsOfFile:path];
     
+    // Load music
+    // [self runAction:[SKAction playSoundFileNamed:@"1.mp3" waitForCompletion:NO]];
+    
     // Set background, centered.
     SKSpriteNode *bgImage = [SKSpriteNode spriteNodeWithImageNamed:@"001.png"];
     bgImage.position = CGPointMake(self.size.width/2, self.size.height/2);
     [self addChild:bgImage];
     
+    // Draw boundaries.
+    _boundary1 = [SKShapeNode node];
+    CGMutablePathRef pathToDraw = CGPathCreateMutable();
+    CGPathMoveToPoint(pathToDraw, NULL, 155, 0);
+    CGPathAddLineToPoint(pathToDraw, NULL, 190, 90);
+    CGPathAddLineToPoint(pathToDraw, NULL, 187, 165);
+    CGPathAddLineToPoint(pathToDraw, NULL, 175, 175);
+    CGPathAddLineToPoint(pathToDraw, NULL, 175, 366);
+    CGPathAddLineToPoint(pathToDraw, NULL, 201, 390);
+    CGPathAddLineToPoint(pathToDraw, NULL, 200, 176);
+    CGPathAddLineToPoint(pathToDraw, NULL, 238, 236);
+    CGPathAddLineToPoint(pathToDraw, NULL, 332, 238);
+    CGPathAddLineToPoint(pathToDraw, NULL, 359, 251);
+    CGPathAddLineToPoint(pathToDraw, NULL, 600, 251);
+    _boundary1.path = pathToDraw;
+    [_boundary1 setStrokeColor:[SKColor blueColor]];
+    [self addChild:_boundary1];
+
     return self;
 }
 
 /**
- * Collision detected.
+ * Pause the scene.
  */
--(void)didBeginContact:(SKPhysicsContact*)contact
-{
-    NSLog(@"contact detected!");
-    
-    SKPhysicsBody *firstBody;
-    SKPhysicsBody *secondBody;
-    
-    if (contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask) {
-        firstBody = contact.bodyA;
-        secondBody = contact.bodyB;
-    } else {
-        firstBody = contact.bodyB;
-        secondBody = contact.bodyA;
-    }
-    
-    // Stop character.
-    if ([firstBody.node.name isEqual: @"sprite"]) {
-        [firstBody.node removeAllActions];
-    }
-    if ([secondBody.node.name isEqual: @"sprite"]) {
-        [secondBody.node removeAllActions];
-    }
-}
-
 -(void)pause
 {
     NSLog(@"Paused.");
@@ -120,6 +102,9 @@ static const uint32_t playerCategory = 0x1 << 1;
     self.scene.view.paused = YES;
 }
 
+/**
+ * Resume the scene.
+ */
 -(void)resume
 {
     NSLog(@"Resumed.");
@@ -176,22 +161,6 @@ static const uint32_t playerCategory = 0x1 << 1;
  */
 -(void)didEvaluateActions
 {
-    // Determine current cursor image depending upon current _activeCursor.
-    switch (_activeCursor) {
-        case 1:
-            _activeCursorImage = @"walk";
-            break;
-            
-        case 2:
-            _activeCursorImage = @"look";
-            break;
-        
-        default:
-            _activeCursorImage = @"default";
-            break;
-    }
-    
-    [self updateCursor];
 }
 
 /**
@@ -248,6 +217,33 @@ static const uint32_t playerCategory = 0x1 << 1;
     }
 }
 
--(void)update:(CFTimeInterval)currentTime {}
+-(void)update:(CFTimeInterval)currentTime
+{
+    if (CGRectIntersectsRect(skView.frame, node.frame) {
+
+        NSLog(@"Intersection");
+    }
+        
+    if ([self.hero intersectsNode:_boundary1]) {
+
+    }
+    
+    // Determine current cursor image depending upon current _activeCursor.
+    switch (_activeCursor) {
+        case 1:
+            _activeCursorImage = @"walk";
+            break;
+            
+        case 2:
+            _activeCursorImage = @"look";
+            break;
+            
+        default:
+            _activeCursorImage = @"default";
+            break;
+    }
+    
+    [self updateCursor];
+}
 
 @end

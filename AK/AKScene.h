@@ -4,7 +4,7 @@
 
 #import "AKSprite.h"
 
-@interface AKScene : SKScene <SKPhysicsContactDelegate>
+@interface AKScene : SKScene
 
 -(id)loadSceneNumber:(int)number;
 

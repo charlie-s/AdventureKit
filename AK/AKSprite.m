@@ -1,12 +1,15 @@
 
 #import "AKSprite.h"
 
-static const uint32_t blockCategory = 0x1 << 0;
-static const uint32_t playerCategory = 0x1 << 1;
+static const uint32_t playerCategory = 0x1 << 0;
+static const uint32_t blockCategory = 0x1 << 1;
+static const uint32_t playerFeetCategory = 0x1 << 2;
+static const uint32_t blockFeetCategory = 0x1 << 3;
 
 @implementation AKSprite
 {
     SKSpriteNode *_sprite;
+    SKSpriteNode *_spriteFeet;
     NSString *_facing;
 }
 
@@ -19,25 +22,19 @@ static const uint32_t playerCategory = 0x1 << 1;
         // Anchor our sprite at bottom center.
         _sprite.anchorPoint = CGPointMake(0.5,0.0);
         
-        // Initialize collision detection.
-        [self initPhysics];
-        
-        // Add to children of this SKNode.
-        [self addChild: _sprite];
+        // Add invisible node at sprite's feet for boundary detection.
+        _spriteFeet = [SKSpriteNode node];
+        _spriteFeet.name = @"spriteFeet";
+        _spriteFeet.size = CGSizeMake(_sprite.size.width, _sprite.size.height * .1);
+        _spriteFeet.color = [SKColor redColor];
+        _spriteFeet.anchorPoint = CGPointMake(0.5,0.0);
+
+        // Add nodes.
+        [self addChild:_sprite];
+        [self addChild:_spriteFeet];
     }
     
     return self;
-}
-
-/**
- * Initialize physics (collision detection with properly categorized objects).
- */
--(void)initPhysics
-{
-    _sprite.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:[self getSize]];
-    _sprite.physicsBody.dynamic = YES;
-    _sprite.physicsBody.categoryBitMask = playerCategory;
-    _sprite.physicsBody.contactTestBitMask = blockCategory;
 }
 
 /**
@@ -54,6 +51,7 @@ static const uint32_t playerCategory = 0x1 << 1;
 -(void)moveTo:(CGPoint)point
 {
     _sprite.position = point;
+    _spriteFeet.position = point;
 }
 
 /**
@@ -91,7 +89,7 @@ static const uint32_t playerCategory = 0x1 << 1;
         [walkFrames addObject:temp];
     }
     
-    // Animate our hero.
+    // Animate our sprite and its feet.
     [_sprite runAction:[SKAction repeatActionForever:
                       [SKAction animateWithTextures:walkFrames
                                        timePerFrame:0.1f
@@ -99,21 +97,17 @@ static const uint32_t playerCategory = 0x1 << 1;
                                             restore:YES]] withKey:@"Move_Hero_Animate"];
     
     // Move our hero. Note that runAction:withKey: will also automatically stop an already running action with the same key.
-    SKAction *yourAction = [SKAction moveTo:location duration:moveDuration];
+    SKAction *walkAction = [SKAction moveTo:location duration:moveDuration];
+
     SKAction *completion = [SKAction runBlock:^{
         // Stop walking animation.
         [_sprite removeActionForKey: @"Move_Hero_Animate"];
     }];
-    SKAction *sequence = [SKAction sequence:@[ yourAction, completion ]];
+    
+    SKAction *sequence = [SKAction sequence:@[ walkAction, completion ]];
+    
     [_sprite runAction:sequence withKey:@"Move_Hero"];
-}
-
-/**
- * Return the hero's current size as a CGSize struct.
- */
--(CGSize)getSize
-{
-    return _sprite.size;
+    [_spriteFeet runAction:sequence withKey:@"Move_Hero_Feet"];
 }
 
 @end

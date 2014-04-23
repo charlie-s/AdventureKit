@@ -25,6 +25,7 @@
 		CB84BE2F1906D2E100169C4F /* wait.png in Resources */ = {isa = PBXBuildFile; fileRef = CB84BE2A1906D2E100169C4F /* wait.png */; };
 		CB84BE301906D2E100169C4F /* walk.png in Resources */ = {isa = PBXBuildFile; fileRef = CB84BE2B1906D2E100169C4F /* walk.png */; };
 		CB84BE321906D8DC00169C4F /* 1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CB84BE311906D8DC00169C4F /* 1.mp3 */; };
+		CB84BE341908233100169C4F /* HUMAStarPathfinder in Resources */ = {isa = PBXBuildFile; fileRef = CB84BE331908233100169C4F /* HUMAStarPathfinder */; };
 		CBFAA8011906B20E003524B1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CBFAA7FF1906B20E003524B1 /* InfoPlist.strings */; };
 		CBFAA8041906B219003524B1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CBFAA8021906B219003524B1 /* InfoPlist.strings */; };
 		CBFAA8051906B25D003524B1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CB5AAF421900616E004CA461 /* main.m */; };
@@ -76,6 +77,7 @@
 		CB84BE2A1906D2E100169C4F /* wait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wait.png; sourceTree = "<group>"; };
 		CB84BE2B1906D2E100169C4F /* walk.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = walk.png; sourceTree = "<group>"; };
 		CB84BE311906D8DC00169C4F /* 1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 1.mp3; sourceTree = "<group>"; };
+		CB84BE331908233100169C4F /* HUMAStarPathfinder */ = {isa = PBXFileReference; lastKnownFileType = folder; path = HUMAStarPathfinder; sourceTree = "<group>"; };
 		CBFAA7FD1906ADC1003524B1 /* AK-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "AK-Info.plist"; path = "AK/AK-Info.plist"; sourceTree = SOURCE_ROOT; };
 		CBFAA8001906B20E003524B1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CBFAA8031906B219003524B1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 		CB5AAF3C1900616E004CA461 /* AK */ = {
 			isa = PBXGroup;
 			children = (
+				CB84BE331908233100169C4F /* HUMAStarPathfinder */,
 				CBFAA80A1906B779003524B1 /* asset */,
 				CB5AAF481900616E004CA461 /* MainMenu.xib */,
 				CBFAA8281906BAA6003524B1 /* AKInventory.h */,
@@ -346,6 +349,7 @@
 				CBFAA8241906B77A003524B1 /* left-still.gif in Resources */,
 				CBFAA8261906B77A003524B1 /* walk-left.atlas in Resources */,
 				CB5AAF531900616E004CA461 /* Images.xcassets in Resources */,
+				CB84BE341908233100169C4F /* HUMAStarPathfinder in Resources */,
 				CB84BE261906CAD100169C4F /* 1.png in Resources */,
 				CBFAA8251906B77A003524B1 /* right-still.gif in Resources */,
 				CB84BE301906D2E100169C4F /* walk.png in Resources */,
