@@ -96,11 +96,20 @@
     NSMutableArray *walkActions = [[NSMutableArray alloc] init];
     int i = 0;
     for (id object in walkPath) {
+        
+        // Store this action set in an array, in the event that it requires animation
+        // change and a point movement change.
+        NSMutableArray *curActionSet = [[NSMutableArray alloc] init];
+
         // Convert point string ({0, 0}) to CGPoint.
         NSValue *curPoint = object;
         CGPoint curCGPoint = curPoint.pointValue;
         
-        // Get previous point, if it exists.
+        // Build SKAction to walk hero to the current point.
+        SKAction *walkAction = [SKAction moveTo:curCGPoint duration:0.1];
+        [curActionSet addObject:walkAction];
+        
+        // Get previous point, if we're past the first iteration.
         CGPoint prevCGPoint = _sprite.position;
         if (i) {
             NSValue *prevPoint = walkPath[i - 1];
@@ -112,22 +121,21 @@
             [self setDirectionFacing:@"right"];
 
             // Add action to change direction.
-            SKAction *changeDir = [SKAction repeatActionForever:[SKAction animateWithTextures:walkRightFrames timePerFrame:0.1f resize:NO restore:YES]];
-            [walkActions addObject:changeDir];
-            
-        } else if (curCGPoint.x < prevCGPoint.x && [_facing isEqualToString:@"right"]) {
+            SKAction *changeDir = [SKAction animateWithTextures:walkRightFrames timePerFrame:0.1f resize:NO restore:YES];
+            [curActionSet addObject:changeDir];
+        }
+        else if (curCGPoint.x < prevCGPoint.x && [_facing isEqualToString:@"right"]) {
             [self setDirectionFacing:@"left"];
             
             // Add action to change direction.
-            SKAction *changeDir = [SKAction repeatActionForever:[SKAction animateWithTextures:walkLeftFrames timePerFrame:0.1f resize:NO restore:YES]];
-            [walkActions addObject:changeDir];
+            SKAction *changeDir = [SKAction animateWithTextures:walkLeftFrames timePerFrame:0.1f resize:NO restore:YES];
+            [curActionSet addObject:changeDir];
         }
         
-        // Build SKAction to walk hero to the current point.
-        SKAction *walkAction = [SKAction moveTo:curCGPoint duration:0.1];
+        NSLog(@"%@", curActionSet);
         
         // Add to our array of walk SKAction's.
-        [walkActions addObject:walkAction];
+        [walkActions addObject:[SKAction group:curActionSet]];
         
         i++;
     }

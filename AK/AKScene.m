@@ -26,53 +26,6 @@
 }
 
 /**
- * Implements pathfinder:canWalkToNodeAtTileLocation:
- */
-- (BOOL)pathfinder:(HUMAStarPathfinder *)pathFinder canWalkToNodeAtTileLocation:(CGPoint)tileLocation
-{
-    TMXLayer *meta = [_tileMap layerNamed:@"wall"];
-    SKSpriteNode *tile = [meta tileAtCoord:tileLocation];
-    
-    return (tile == NULL);
-    
-    // @todo would like to know how the GID stuff below works – what is GID?
-    
-//	CCTMXLayer *meta = [self.tileMap layerNamed:@"Meta"];
-//	uint8_t gid = [meta tileGIDAt:tileLocation];
-//    
-//	BOOL walkable = YES;
-//    
-//	if (gid) {
-//		NSDictionary *properties = [self.tileMap propertiesForGID:gid];
-//		walkable = [properties[@"walkable"] boolValue];
-//	}
-//    
-//	return walkable;
-    return true;
-}
-
-/**
- * Implements pathfinder:costForNodeAtTileLocation:
- */
-- (NSUInteger)pathfinder:(HUMAStarPathfinder *)pathfinder costForNodeAtTileLocation:(CGPoint)tileLocation
-{
-//	CCTMXLayer *ground = [self.tileMap layerNamed:@"Ground"];
-//	uint32_t gid = [ground tileGIDAt:tileLocation];
-//    
-//	NSUInteger cost = pathfinder.baseMovementCost;
-//    
-//	if (gid) {
-//		NSDictionary *properties = [self.tileMap propertiesForGID:gid];
-//		if (properties[@"cost"]) {
-//			cost = [properties[@"cost"] integerValue];
-//		}
-//	}
-//    
-//	return cost;
-    return 10;
-}
-
-/**
  * Override initWithSize
  */
 -(id)initWithSize:(CGSize)size
@@ -118,6 +71,53 @@
     self.pathfinder = [HUMAStarPathfinder pathfinderWithTileMapSize:self.tileMap.mapSize tileSize:self.tileMap.tileSize delegate:self];
     
     return self;
+}
+
+/**
+ * Implements pathfinder:canWalkToNodeAtTileLocation:
+ */
+- (BOOL)pathfinder:(HUMAStarPathfinder *)pathFinder canWalkToNodeAtTileLocation:(CGPoint)tileLocation
+{
+    TMXLayer *meta = [self.tileMap layerNamed:@"wall"];
+    SKSpriteNode *tile = [meta tileAtCoord:tileLocation];
+    
+    return (tile == NULL);
+    
+    // @todo would like to know how the GID stuff below works – what is GID?
+    
+    //	CCTMXLayer *meta = [self.tileMap layerNamed:@"Meta"];
+    //	uint8_t gid = [meta tileGIDAt:tileLocation];
+    //
+    //	BOOL walkable = YES;
+    //
+    //	if (gid) {
+    //		NSDictionary *properties = [self.tileMap propertiesForGID:gid];
+    //		walkable = [properties[@"walkable"] boolValue];
+    //	}
+    //
+    //	return walkable;
+    return true;
+}
+
+/**
+ * Implements pathfinder:costForNodeAtTileLocation:
+ */
+- (NSUInteger)pathfinder:(HUMAStarPathfinder *)pathfinder costForNodeAtTileLocation:(CGPoint)tileLocation
+{
+    //	CCTMXLayer *ground = [self.tileMap layerNamed:@"Ground"];
+    //	uint32_t gid = [ground tileGIDAt:tileLocation];
+    //
+    //	NSUInteger cost = pathfinder.baseMovementCost;
+    //
+    //	if (gid) {
+    //		NSDictionary *properties = [self.tileMap propertiesForGID:gid];
+    //		if (properties[@"cost"]) {
+    //			cost = [properties[@"cost"] integerValue];
+    //		}
+    //	}
+    //    
+    //	return cost;
+    return 10;
 }
 
 /**
