@@ -25,18 +25,18 @@
     NSDictionary *_plist;
 }
 
-
-
-
-
-- (BOOL)pathfinder:(HUMAStarPathfinder *)pathFinder canWalkToNodeAtTileLocation:(CGPoint)tileLocation {
-
-//    TMXLayer *ourLayer = [_tileMap layerNamed:@"block"];
-//    SKSpriteNode *tile = [ourLayer tileAt:tileLocation];
-//    NSLog(@"%@", ourLayer);
+/**
+ * Implements pathfinder:canWalkToNodeAtTileLocation:
+ */
+- (BOOL)pathfinder:(HUMAStarPathfinder *)pathFinder canWalkToNodeAtTileLocation:(CGPoint)tileLocation
+{
+    TMXLayer *meta = [_tileMap layerNamed:@"wall"];
+    SKSpriteNode *tile = [meta tileAtCoord:tileLocation];
     
-//    NSLog(@"CGPoint X:%f", tileLocation.x);
-//    NSLog(@"CGPoint Y:%f", tileLocation.y);
+    return (tile == NULL);
+    
+    // @todo would like to know how the GID stuff below works – what is GID?
+    
 //	CCTMXLayer *meta = [self.tileMap layerNamed:@"Meta"];
 //	uint8_t gid = [meta tileGIDAt:tileLocation];
 //    
@@ -51,7 +51,11 @@
     return true;
 }
 
-- (NSUInteger)pathfinder:(HUMAStarPathfinder *)pathfinder costForNodeAtTileLocation:(CGPoint)tileLocation {
+/**
+ * Implements pathfinder:costForNodeAtTileLocation:
+ */
+- (NSUInteger)pathfinder:(HUMAStarPathfinder *)pathfinder costForNodeAtTileLocation:(CGPoint)tileLocation
+{
 //	CCTMXLayer *ground = [self.tileMap layerNamed:@"Ground"];
 //	uint32_t gid = [ground tileGIDAt:tileLocation];
 //    
@@ -67,10 +71,6 @@
 //	return cost;
     return 10;
 }
-
-
-
-
 
 /**
  * Override initWithSize
@@ -221,26 +221,22 @@
     // Get the point clicked.
     CGPoint location = [theEvent locationInNode:self];
     
-    // If the current active cursor is walk (1), calculate the fastest path using
-    // HUMAStarPathfinder
-    if (_activeCursor == 1) {
+    /**
+     * Walk
+     */
+    if (_activeCursor == 1) {;
+        // Calculate the fastest path using HUMAStarPathfinder.
         NSArray *walkPath = [self.pathfinder findPathFromStart:self.hero.getPosition toTarget:location];
-//        NSLog(@"%@", walkPath);
+        
+        // Walk the hero.
+        [self.hero walkTo:walkPath];
     }
     
-    // Set proper action depending on current active cursor.
-    switch (_activeCursor) {
-        case 1:
-            [self.hero walkTo:location];
-            break;
-            
-        case 2:
-            [self showDialog:[[_plist valueForKey:@"action"] valueForKey:@"look"]];
-            break;
-            
-        default:
-            NSLog(@"No activeCursor set.");
-            break;
+    /**
+     * Look
+     */
+    if (_activeCursor == 2) {
+        [self showDialog:[[_plist valueForKey:@"action"] valueForKey:@"look"]];
     }
 }
 
