@@ -32,6 +32,7 @@
 - (id)init {
 	NSLog(@"External clients are not allowed to call -[%@ init] directly! Please use -initWithTileMapSize:tileSize: or +pathfinderWithTileMapSize:tileSize: instead.", [self class]);
 	[self doesNotRecognizeSelector:_cmd];
+    
 	return nil;
 }
 
@@ -114,7 +115,7 @@
 	
 	// check to make sure we can actually get a path to the target node
 	if (![self canWalkToNodeAtTileLocation:targetTileLocation]) {
-		return nil;
+//		return nil;
 	}
 
 	[self.openList removeAllObjects];
@@ -127,6 +128,7 @@
 	[self insertInOpenSteps:self.startNode];
 	
 	while (self.openList.count > 0) {
+        
 		// 2) Get the node with the lower F value
 		HUMAStarPathfinderNode *checkingNode = self.openList[0];
 				
@@ -150,7 +152,7 @@
 			[self determineNodeValuesForAdjacentNode:node currentNode:checkingNode];
 		}
 	}
-	
+
 	return [NSArray arrayWithArray:self.shortestPath];
 }
 
@@ -273,7 +275,6 @@
 			break;
 	}
 	
-	
 	return heuristic;
 }
 
@@ -362,6 +363,7 @@
 			[neighbors addObject:[HUMAStarPathfinderNode nodeWithLocation:tileLocation]];
 		}
 	}
+    
 	return neighbors;
 }
 
