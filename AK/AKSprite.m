@@ -7,6 +7,8 @@
     AKScene *_scene;
     
     SKSpriteNode *_sprite;
+    float _scaleRate;
+    NSString *_scaleDirection;
     NSString *_facing;
     NSString *_walking;
     
@@ -33,6 +35,15 @@
     }
     
     return self;
+}
+
+/**
+ * Set the scale rate and direction.
+ */
+-(void)setScaleRate:(float)rate direction:(NSString*)direction
+{
+    _scaleRate = rate;
+    _scaleDirection = direction;
 }
 
 /**
@@ -133,6 +144,9 @@
             NSValue *previousPoint = walkPath[i - 1];
             previousCGPoint = previousPoint.pointValue;
         }
+        
+        // Determine if _scaleRate and _scaleDirection should alter the sprites size.
+        // ...
         
         // Check for direction change.
         if (currentCGPoint.x > previousCGPoint.x && ![_walking isEqualToString:@"e"]) {

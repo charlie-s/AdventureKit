@@ -38,7 +38,7 @@
         [self loadSceneNumber:_currentScreen];
         
         // Set hero sprite.
-        self.hero = [AKSprite initIntoScene:self];
+        self.hero = [[AKSprite alloc] initIntoScene:self];
         [self.hero setDirectionFacing:@"left"];
         [self.hero moveTo:CGPointMake(600, 200)];
         [self addChild:self.hero];

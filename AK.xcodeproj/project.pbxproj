@@ -46,8 +46,6 @@
 		CBFAA8011906B20E003524B1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CBFAA7FF1906B20E003524B1 /* InfoPlist.strings */; };
 		CBFAA8041906B219003524B1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CBFAA8021906B219003524B1 /* InfoPlist.strings */; };
 		CBFAA8051906B25D003524B1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CB5AAF421900616E004CA461 /* main.m */; };
-		CBFAA82A1906BAA6003524B1 /* AKInventory.m in Sources */ = {isa = PBXBuildFile; fileRef = CBFAA8291906BAA6003524B1 /* AKInventory.m */; };
-		CBFAA82D1906BAC1003524B1 /* AKTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = CBFAA82C1906BAC1003524B1 /* AKTitle.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,10 +104,6 @@
 		CBFAA7FD1906ADC1003524B1 /* AK-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "AK-Info.plist"; path = "AK/AK-Info.plist"; sourceTree = SOURCE_ROOT; };
 		CBFAA8001906B20E003524B1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CBFAA8031906B219003524B1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		CBFAA8281906BAA6003524B1 /* AKInventory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKInventory.h; sourceTree = "<group>"; };
-		CBFAA8291906BAA6003524B1 /* AKInventory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKInventory.m; sourceTree = "<group>"; };
-		CBFAA82B1906BAC1003524B1 /* AKTitle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKTitle.h; sourceTree = "<group>"; };
-		CBFAA82C1906BAC1003524B1 /* AKTitle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKTitle.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,14 +193,10 @@
 				CB84BE3E19082DD900169C4F /* JSTileMap.m */,
 				CBFAA80A1906B779003524B1 /* asset */,
 				CB5AAF481900616E004CA461 /* MainMenu.xib */,
-				CBFAA8281906BAA6003524B1 /* AKInventory.h */,
-				CBFAA8291906BAA6003524B1 /* AKInventory.m */,
 				CB5AAF4C1900616E004CA461 /* AKScene.h */,
 				CB5AAF4A1900616E004CA461 /* AKScene.m */,
 				CB5AAF861900F5F6004CA461 /* AKSprite.h */,
 				CB5AAF871900F5F6004CA461 /* AKSprite.m */,
-				CBFAA82B1906BAC1003524B1 /* AKTitle.h */,
-				CBFAA82C1906BAC1003524B1 /* AKTitle.m */,
 				CB5AAF4F1900616E004CA461 /* AKAppDelegate.h */,
 				CB5AAF4D1900616E004CA461 /* AKAppDelegate.m */,
 				CB5AAF521900616E004CA461 /* Images.xcassets */,
@@ -416,11 +406,9 @@
 				CB84BE4E19082FB800169C4F /* HUMAStarPathfinderNode.m in Sources */,
 				CB84BE4F19082FB800169C4F /* LFCGzipUtility.m in Sources */,
 				CB84BE5019082FB800169C4F /* JSTileMap.m in Sources */,
-				CBFAA82A1906BAA6003524B1 /* AKInventory.m in Sources */,
 				CBFAA8051906B25D003524B1 /* main.m in Sources */,
 				CB5AAF4E1900616E004CA461 /* AKAppDelegate.m in Sources */,
 				CB5AAF881900F5F6004CA461 /* AKSprite.m in Sources */,
-				CBFAA82D1906BAC1003524B1 /* AKTitle.m in Sources */,
 				CB5AAF4B1900616E004CA461 /* AKScene.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
