@@ -1,8 +1,11 @@
 
 #import "AKSprite.h"
+#import "AKScene.h"
 
 @implementation AKSprite
 {
+    AKScene *_scene;
+    
     SKSpriteNode *_sprite;
     NSString *_facing;
     NSString *_walking;
@@ -10,9 +13,11 @@
     NSArray *_directions;
 }
 
--(id)init
+-(id)initIntoScene:(AKScene*)scene
 {
     if(self = [super init]) {
+        _scene = scene;
+        
         _sprite = [SKSpriteNode spriteNodeWithImageNamed:@"down-still.gif"];
         _sprite.name = @"sprite";
         
@@ -159,6 +164,15 @@
             }];
             
             [currentActions addObject:changeDirection];
+        }
+        
+        // Listen for portal hit. If hit, send message to parent.
+        if (TRUE) {
+            NSLog(@"Portal hit!");
+            SKAction *portalHit = [SKAction runBlock:^{
+                [_scene loadSceneNumber:1];
+            }];
+            [currentActions addObject:portalHit];
         }
         
         // Add to our array of walk SKAction's.

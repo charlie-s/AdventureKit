@@ -1,5 +1,6 @@
 
 #import "AKScene.h"
+#import "AKSprite.h"
 #import "JSTileMap.h"
 #import "HUMAStarPathfinder.h"
 
@@ -37,7 +38,7 @@
         [self loadSceneNumber:_currentScreen];
         
         // Set hero sprite.
-        self.hero = [[AKSprite alloc] init];
+        self.hero = [AKSprite initIntoScene:self];
         [self.hero setDirectionFacing:@"left"];
         [self.hero moveTo:CGPointMake(600, 200)];
         [self addChild:self.hero];
@@ -49,8 +50,10 @@
 /**
  * Load the given scene number.
  */
--(id)loadSceneNumber:(int)number
+-(void)loadSceneNumber:(int)number
 {
+    NSLog(@"Loading scene #%i.", number);
+    
     // Load scene plist.
     NSString * path = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%i", number] ofType:@"plist"];
     _plist = [NSDictionary dictionaryWithContentsOfFile:path];
@@ -61,8 +64,6 @@
     
     // Initialize HUMAStarPathfinder.
     self.pathfinder = [HUMAStarPathfinder pathfinderWithTileMapSize:self.tileMap.mapSize tileSize:self.tileMap.tileSize delegate:self];
-    
-    return self;
 }
 
 /**

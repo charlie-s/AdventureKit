@@ -10,7 +10,7 @@
 
 @interface AKScene : SKScene <HUMAStarPathfinderDelegate>
 
--(id)loadSceneNumber:(int)number;
+-(void)loadSceneNumber:(int)number;
 
 @property (nonatomic) AKSprite *hero;
 
