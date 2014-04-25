@@ -11,6 +11,7 @@
 @interface AKScene : SKScene <HUMAStarPathfinderDelegate>
 
 -(void)loadSceneNumber:(int)number;
+-(JSTileMap*)getTileMap;
 
 @property NSInteger *cursorWait;
 @property NSString *cursorActiveImage;

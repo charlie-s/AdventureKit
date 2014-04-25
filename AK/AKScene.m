@@ -60,10 +60,15 @@
     
     // Load the tilemap.
     self.tileMap = [JSTileMap mapNamed:[NSString stringWithFormat:@"%i.tmx", number]];
-    if (self.tileMap) [self addChild:self.tileMap];
+    [self addChild:self.tileMap];
     
     // Initialize HUMAStarPathfinder.
     self.pathfinder = [HUMAStarPathfinder pathfinderWithTileMapSize:self.tileMap.mapSize tileSize:self.tileMap.tileSize delegate:self];
+}
+
+-(JSTileMap*)getTileMap
+{
+    return self.tileMap;
 }
 
 /**
@@ -71,7 +76,8 @@
  */
 - (BOOL)pathfinder:(HUMAStarPathfinder *)pathFinder canWalkToNodeAtTileLocation:(CGPoint)tileLocation
 {
-    TMXLayer *meta = [self.tileMap layerNamed:@"wall"];
+    // Check if this is a block layer.
+    TMXLayer *meta = [self.tileMap layerNamed:@"block"];
     SKSpriteNode *tile = [meta tileAtCoord:tileLocation];
     
     return (tile == NULL);

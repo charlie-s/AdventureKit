@@ -1,6 +1,8 @@
 
 #import "AKSprite.h"
 #import "AKScene.h"
+#import "JSTileMap.h"
+#import "HUMAStarPathfinder.h"
 
 @implementation AKSprite
 {
@@ -20,7 +22,10 @@
     if(self = [super init]) {
         _scene = scene;
         
-        _sprite = [SKSpriteNode spriteNodeWithImageNamed:@"down-still.gif"];
+        // Load "still" atlas.
+        SKTextureAtlas *atlas = [SKTextureAtlas atlasNamed:[NSString stringWithFormat:@"still"]];
+        _sprite = [SKSpriteNode spriteNodeWithTexture:[atlas textureNamed:@"s"]];
+
         _sprite.name = @"sprite";
         
         // Anchor our sprite at bottom center.
@@ -181,13 +186,19 @@
         }
         
         // Listen for portal hit. If hit, send message to parent.
-        if (TRUE) {
-            NSLog(@"Portal hit!");
-            SKAction *portalHit = [SKAction runBlock:^{
-                [_scene loadSceneNumber:1];
-            }];
-            [currentActions addObject:portalHit];
-        }
+
+        JSTileMap *tileMap = [_scene getTileMap];
+        TMXLayer *meta = [tileMap layerNamed:@"portal"];
+        SKSpriteNode *tile = [meta tileAt:currentCGPoint];
+//        NSLog(@"tile:");
+//        NSLog(@"%@", tile);
+//        if (TRUE) {
+//            NSLog(@"Portal hit!");
+//            SKAction *portalHit = [SKAction runBlock:^{
+//                [_scene loadSceneNumber:1];
+//            }];
+//            [currentActions addObject:portalHit];
+//        }
         
         // Add to our array of walk SKAction's.
         [walkActions addObject:[SKAction group:currentActions]];

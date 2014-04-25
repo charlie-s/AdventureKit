@@ -43,6 +43,7 @@
 		CB84BE4E19082FB800169C4F /* HUMAStarPathfinderNode.m in Sources */ = {isa = PBXBuildFile; fileRef = CB84BE4819082DF300169C4F /* HUMAStarPathfinderNode.m */; };
 		CB84BE4F19082FB800169C4F /* LFCGzipUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = CB84BE4219082DE700169C4F /* LFCGzipUtility.m */; };
 		CB84BE5019082FB800169C4F /* JSTileMap.m in Sources */ = {isa = PBXBuildFile; fileRef = CB84BE3E19082DD900169C4F /* JSTileMap.m */; };
+		CBE24CF3190B237E00E6C152 /* _portal.png in Resources */ = {isa = PBXBuildFile; fileRef = CBE24CF2190B237E00E6C152 /* _portal.png */; };
 		CBFAA8011906B20E003524B1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CBFAA7FF1906B20E003524B1 /* InfoPlist.strings */; };
 		CBFAA8041906B219003524B1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CBFAA8021906B219003524B1 /* InfoPlist.strings */; };
 		CBFAA8051906B25D003524B1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CB5AAF421900616E004CA461 /* main.m */; };
@@ -101,6 +102,7 @@
 		CB84BE4619082DF300169C4F /* HUMAStarPathfinder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HUMAStarPathfinder.m; path = HUMAStarPathfinder/HUMAStarPathfinder.m; sourceTree = "<group>"; };
 		CB84BE4719082DF300169C4F /* HUMAStarPathfinderNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HUMAStarPathfinderNode.h; path = HUMAStarPathfinder/HUMAStarPathfinderNode.h; sourceTree = "<group>"; };
 		CB84BE4819082DF300169C4F /* HUMAStarPathfinderNode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HUMAStarPathfinderNode.m; path = HUMAStarPathfinder/HUMAStarPathfinderNode.m; sourceTree = "<group>"; };
+		CBE24CF2190B237E00E6C152 /* _portal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = _portal.png; sourceTree = "<group>"; };
 		CBFAA7FD1906ADC1003524B1 /* AK-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "AK-Info.plist"; path = "AK/AK-Info.plist"; sourceTree = SOURCE_ROOT; };
 		CBFAA8001906B20E003524B1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CBFAA8031906B219003524B1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -269,6 +271,7 @@
 			isa = PBXGroup;
 			children = (
 				CB24860D1908482D00B573BF /* _block.png */,
+				CBE24CF2190B237E00E6C152 /* _portal.png */,
 				CB84BE3B19082CEE00169C4F /* 1.tmx */,
 				CB84BE231906CAD100169C4F /* 1.plist */,
 				CB84BE241906CAD100169C4F /* 1.png */,
@@ -378,6 +381,7 @@
 				CB5AAF491900616E004CA461 /* MainMenu.xib in Resources */,
 				CB84BE2F1906D2E100169C4F /* wait.png in Resources */,
 				CB84BE3C19082CEE00169C4F /* 1.tmx in Resources */,
+				CBE24CF3190B237E00E6C152 /* _portal.png in Resources */,
 				CB43CC571909E94600DAE481 /* walk-w.atlas in Resources */,
 				CB84BE2C1906D2E100169C4F /* default.png in Resources */,
 				CB43CC551909E94600DAE481 /* still.atlas in Resources */,
