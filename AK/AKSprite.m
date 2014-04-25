@@ -4,8 +4,8 @@
 @implementation AKSprite
 {
     SKSpriteNode *_sprite;
-    SKSpriteNode *_spriteFeet;
     NSString *_facing;
+    NSString *_walking;
 }
 
 -(id)init
@@ -16,17 +16,9 @@
         
         // Anchor our sprite at bottom center.
         _sprite.anchorPoint = CGPointMake(0.5,0.0);
-        
-        // Add invisible node at sprite's feet for boundary detection.
-        _spriteFeet = [SKSpriteNode node];
-        _spriteFeet.name = @"spriteFeet";
-        _spriteFeet.size = CGSizeMake(_sprite.size.width, _sprite.size.height * .1);
-        _spriteFeet.color = [SKColor blueColor];
-        _spriteFeet.anchorPoint = CGPointMake(0.5,0.0);
 
         // Add nodes.
         [self addChild:_sprite];
-        [self addChild:_spriteFeet];
     }
     
     return self;
@@ -49,11 +41,19 @@
 }
 
 /**
- * Set the direction our sprite is currently facing.
+ * Set the direction sprite is currently facing.
  */
 -(void)setDirectionFacing:(NSString*)direction
 {
     _facing = direction;
+}
+
+/**
+ * Set the direction sprite is currently walking.
+ */
+-(void)setDirectionWalking:(NSString*)direction
+{
+    _walking = direction;
 }
 
 /**
@@ -62,7 +62,26 @@
 -(void)moveTo:(CGPoint)point
 {
     _sprite.position = point;
-    _spriteFeet.position = point;
+}
+
+/**
+ * Generate an SKTextureAtlas object for the given direction.
+ */
+-(NSMutableArray*)buildAtlasFacing:(NSString*)direction
+{
+    // Create return array.
+    NSMutableArray *frames = [NSMutableArray array];
+    
+    // Get atlas.
+    SKTextureAtlas *atlas = [SKTextureAtlas atlasNamed:[NSString stringWithFormat:@"walk-%@", direction]];
+    
+    // For each atlas texture, add to frames array.
+    for (int i=1; i <= atlas.textureNames.count; i++) {
+        SKTexture *temp = [atlas textureNamed:[NSString stringWithFormat:@"%d", i]];
+        [frames addObject:temp];
+    }
+
+    return frames;
 }
 
 /**
@@ -70,79 +89,75 @@
  */
 -(void)walkTo:(NSArray*)walkPath
 {
-    // Build out SKTexture for left walk animation.
-    NSMutableArray *walkLeftFrames = [NSMutableArray array];
-    SKTextureAtlas *walkLeftAnimatedAtlas = [SKTextureAtlas atlasNamed:@"walk-left"];
+    // Gather animation frame arrays.
+    NSMutableArray *walkLeftFrames = [self buildAtlasFacing:@"left"];
+    NSMutableArray *walkRightFrames = [self buildAtlasFacing:@"right"];
     
-    NSUInteger numImagesLeft = walkLeftAnimatedAtlas.textureNames.count;
-    for (int i=1; i <= numImagesLeft; i++) {
-        NSString *textureName = [NSString stringWithFormat:@"%d", i];
-        SKTexture *temp = [walkLeftAnimatedAtlas textureNamed:textureName];
-        [walkLeftFrames addObject:temp];
-    }
-
-    // Build out SKTexture for right walk animation.
-    NSMutableArray *walkRightFrames = [NSMutableArray array];
-    SKTextureAtlas *walkRightAnimatedAtlas = [SKTextureAtlas atlasNamed:@"walk-right"];
-    
-    NSUInteger numImagesRight = walkRightAnimatedAtlas.textureNames.count;
-    for (int i=1; i <= numImagesRight; i++) {
-        NSString *textureName = [NSString stringWithFormat:@"%d", i];
-        SKTexture *temp = [walkRightAnimatedAtlas textureNamed:textureName];
-        [walkRightFrames addObject:temp];
-    }
-    
-    // Move our hero.
+    // Create array to store all SKActions for this walk event.
     NSMutableArray *walkActions = [[NSMutableArray alloc] init];
+    
+    // Move our sprite.
     int i = 0;
     for (id object in walkPath) {
         
-        // Store this action set in an array, in the event that it requires animation
-        // change and a point movement change.
-        NSMutableArray *curActionSet = [[NSMutableArray alloc] init];
+        // Create an array for the current point, in the event that the current point requires a direction change
+        // which means multiple parallel SKActions will be run (moveTo and starting an animation).
+        NSMutableArray *currentActions = [[NSMutableArray alloc] init];
 
-        // Convert point string ({0, 0}) to CGPoint.
-        NSValue *curPoint = object;
-        CGPoint curCGPoint = curPoint.pointValue;
+        // Convert the current point string ({0, 0}) to a CGPoint.
+        NSValue *currentPoint = object;
+        CGPoint currentCGPoint = currentPoint.pointValue;
         
-        // Build SKAction to walk hero to the current point.
-        SKAction *walkAction = [SKAction moveTo:curCGPoint duration:0.1];
-        [curActionSet addObject:walkAction];
+        // Build the SKAction to walk the sprite to the current point.
+        SKAction *walkAction = [SKAction moveTo:currentCGPoint duration:0.1];
+        [currentActions addObject:walkAction];
         
-        // Get previous point, if we're past the first iteration.
-        CGPoint prevCGPoint = _sprite.position;
+        // If we're past the first loop through walkPath, get the previous point to see if our direction has
+        // changed; otherwise just use the sprite's starting position.
+        CGPoint previousCGPoint = _sprite.position;
         if (i) {
-            NSValue *prevPoint = walkPath[i - 1];
-            prevCGPoint = prevPoint.pointValue;
+            NSValue *previousPoint = walkPath[i - 1];
+            previousCGPoint = previousPoint.pointValue;
         }
         
-        // Set direction facing.
-        if (curCGPoint.x > prevCGPoint.x && [_facing isEqualToString:@"left"]) {
+        // Check for direction change.
+        if (currentCGPoint.x > previousCGPoint.x && ![_walking isEqualToString:@"right"]) {
+            [self setDirectionWalking:@"right"];
             [self setDirectionFacing:@"right"];
 
-            // Add action to change direction.
-            SKAction *changeDir = [SKAction animateWithTextures:walkRightFrames timePerFrame:0.1f resize:NO restore:YES];
-            [curActionSet addObject:changeDir];
+            // Add action to change direction. We do this in a block do that it doesn't block the queue of
+            // subsequent paths from executing.
+            SKAction *walkAnimate = [SKAction animateWithTextures:walkRightFrames timePerFrame:0.1f resize:NO restore:YES];
+            SKAction *changeDirection = [SKAction runBlock:^{
+                [_sprite runAction:[SKAction repeatActionForever:walkAnimate] withKey:@"Move_Sprite_Animation"];
+            }];
+            
+            [currentActions addObject:changeDirection];
         }
-        else if (curCGPoint.x < prevCGPoint.x && [_facing isEqualToString:@"right"]) {
+        else if (currentCGPoint.x < previousCGPoint.x && ![_walking isEqualToString:@"left"]) {
+            [self setDirectionWalking:@"left"];
             [self setDirectionFacing:@"left"];
             
-            // Add action to change direction.
-            SKAction *changeDir = [SKAction animateWithTextures:walkLeftFrames timePerFrame:0.1f resize:NO restore:YES];
-            [curActionSet addObject:changeDir];
+            // Add action to change direction. We do this in a block do that it doesn't block the queue of
+            // subsequent paths from executing.
+            SKAction *walkAnimate = [SKAction animateWithTextures:walkLeftFrames timePerFrame:0.1f resize:NO restore:YES];
+            SKAction *changeDirection = [SKAction runBlock:^{
+                [_sprite runAction:[SKAction repeatActionForever:walkAnimate] withKey:@"Move_Sprite_Animation"];
+            }];
+            
+            [currentActions addObject:changeDirection];
         }
         
-        NSLog(@"%@", curActionSet);
-        
         // Add to our array of walk SKAction's.
-        [walkActions addObject:[SKAction group:curActionSet]];
+        [walkActions addObject:[SKAction group:currentActions]];
         
         i++;
     }
     
     // Stop the animation when we're all done.
     SKAction *stopWalkAction = [SKAction runBlock:^{
-        [_sprite removeActionForKey: @"Move_Hero_Animation"];
+        [_sprite removeActionForKey: @"Move_Sprite_Animation"];
+        [self setDirectionWalking:@""];
 
         // Update the "facing" direction.
         _sprite.texture = [SKTexture textureWithImageNamed:[NSString stringWithFormat:@"%@-still.gif", _facing]];
@@ -152,8 +167,7 @@
     // Run all actions!
     SKAction *sequence = [SKAction sequence:walkActions];
 
-    [_sprite runAction:sequence withKey:@"Move_Hero"];
-    [_spriteFeet runAction:sequence withKey:@"Move_Hero_Feet"];
+    [_sprite runAction:sequence withKey:@"Move_Sprite"];
 }
 
 @end
