@@ -6,6 +6,8 @@
     SKSpriteNode *_sprite;
     NSString *_facing;
     NSString *_walking;
+    
+    NSArray *_directions;
 }
 
 -(id)init
@@ -19,6 +21,10 @@
 
         // Add nodes.
         [self addChild:_sprite];
+        
+        // Set directions.
+//        _directions = @[@"n", @"ne", @"e", @"se", @"s", @"sw", @"w", @"nw"];
+        _directions = @[@"e", @"w"];
     }
     
     return self;
@@ -67,7 +73,7 @@
 /**
  * Generate an SKTextureAtlas object for the given direction.
  */
--(NSMutableArray*)buildAtlasFacing:(NSString*)direction
+-(NSMutableArray*)loadAtlasFacing:(NSString*)direction
 {
     // Create return array.
     NSMutableArray *frames = [NSMutableArray array];
@@ -90,8 +96,11 @@
 -(void)walkTo:(NSArray*)walkPath
 {
     // Gather animation frame arrays.
-    NSMutableArray *walkLeftFrames = [self buildAtlasFacing:@"left"];
-    NSMutableArray *walkRightFrames = [self buildAtlasFacing:@"right"];
+    NSMutableDictionary *walkFramesets = [NSMutableDictionary dictionary];
+    for (id object in _directions) {
+        NSMutableArray *atlas = [self loadAtlasFacing:object];
+        [walkFramesets setObject:atlas forKey:object];
+    }
     
     // Create array to store all SKActions for this walk event.
     NSMutableArray *walkActions = [[NSMutableArray alloc] init];
@@ -121,26 +130,30 @@
         }
         
         // Check for direction change.
-        if (currentCGPoint.x > previousCGPoint.x && ![_walking isEqualToString:@"right"]) {
-            [self setDirectionWalking:@"right"];
-            [self setDirectionFacing:@"right"];
+        if (currentCGPoint.x > previousCGPoint.x && ![_walking isEqualToString:@"e"]) {
+            [self setDirectionWalking:@"e"];
+            [self setDirectionFacing:@"e"];
+            
+            NSMutableArray *walkFrames = [walkFramesets objectForKey:@"e"];
 
             // Add action to change direction. We do this in a block do that it doesn't block the queue of
             // subsequent paths from executing.
-            SKAction *walkAnimate = [SKAction animateWithTextures:walkRightFrames timePerFrame:0.1f resize:NO restore:YES];
+            SKAction *walkAnimate = [SKAction animateWithTextures:walkFrames timePerFrame:0.1f resize:NO restore:YES];
             SKAction *changeDirection = [SKAction runBlock:^{
                 [_sprite runAction:[SKAction repeatActionForever:walkAnimate] withKey:@"Move_Sprite_Animation"];
             }];
             
             [currentActions addObject:changeDirection];
         }
-        else if (currentCGPoint.x < previousCGPoint.x && ![_walking isEqualToString:@"left"]) {
-            [self setDirectionWalking:@"left"];
-            [self setDirectionFacing:@"left"];
+        else if (currentCGPoint.x < previousCGPoint.x && ![_walking isEqualToString:@"w"]) {
+            [self setDirectionWalking:@"w"];
+            [self setDirectionFacing:@"w"];
+            
+            NSMutableArray *walkFrames = [walkFramesets objectForKey:@"w"];
             
             // Add action to change direction. We do this in a block do that it doesn't block the queue of
             // subsequent paths from executing.
-            SKAction *walkAnimate = [SKAction animateWithTextures:walkLeftFrames timePerFrame:0.1f resize:NO restore:YES];
+            SKAction *walkAnimate = [SKAction animateWithTextures:walkFrames timePerFrame:0.1f resize:NO restore:YES];
             SKAction *changeDirection = [SKAction runBlock:^{
                 [_sprite runAction:[SKAction repeatActionForever:walkAnimate] withKey:@"Move_Sprite_Animation"];
             }];
@@ -158,9 +171,11 @@
     SKAction *stopWalkAction = [SKAction runBlock:^{
         [_sprite removeActionForKey: @"Move_Sprite_Animation"];
         [self setDirectionWalking:@""];
-
+        
         // Update the "facing" direction.
-        _sprite.texture = [SKTexture textureWithImageNamed:[NSString stringWithFormat:@"%@-still.gif", _facing]];
+        SKTextureAtlas *stillAtlas = [SKTextureAtlas atlasNamed:@"still"];
+        SKTexture *temp = [stillAtlas textureNamed:_facing];
+        _sprite.texture = temp;
     }];
     [walkActions addObject:stopWalkAction];
     

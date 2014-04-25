@@ -55,14 +55,6 @@
     NSString * path = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%i", number] ofType:@"plist"];
     _plist = [NSDictionary dictionaryWithContentsOfFile:path];
     
-    // Load music
-    // [self runAction:[SKAction playSoundFileNamed:@"1.mp3" waitForCompletion:NO]];
-    
-    // Set background, centered.
-//    SKSpriteNode *bgImage = [SKSpriteNode spriteNodeWithImageNamed:[NSString stringWithFormat:@"%i.png", number]];
-//    bgImage.position = CGPointMake(self.size.width/2, self.size.height/2);
-//    [self addChild:bgImage];
-    
     // Load the tilemap.
     self.tileMap = [JSTileMap mapNamed:[NSString stringWithFormat:@"%i.tmx", number]];
     if (self.tileMap) [self addChild:self.tileMap];

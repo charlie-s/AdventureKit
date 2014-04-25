@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		CB24860E1908482E00B573BF /* _block.png in Resources */ = {isa = PBXBuildFile; fileRef = CB24860D1908482D00B573BF /* _block.png */; };
+		CB43CC551909E94600DAE481 /* still.atlas in Resources */ = {isa = PBXBuildFile; fileRef = CB43CC521909E94600DAE481 /* still.atlas */; };
+		CB43CC561909E94600DAE481 /* walk-e.atlas in Resources */ = {isa = PBXBuildFile; fileRef = CB43CC531909E94600DAE481 /* walk-e.atlas */; };
+		CB43CC571909E94600DAE481 /* walk-w.atlas in Resources */ = {isa = PBXBuildFile; fileRef = CB43CC541909E94600DAE481 /* walk-w.atlas */; };
 		CB5AAF351900616E004CA461 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB5AAF341900616E004CA461 /* Cocoa.framework */; };
 		CB5AAF371900616E004CA461 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB5AAF361900616E004CA461 /* SpriteKit.framework */; };
 		CB5AAF491900616E004CA461 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB5AAF481900616E004CA461 /* MainMenu.xib */; };
@@ -43,11 +46,6 @@
 		CBFAA8011906B20E003524B1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CBFAA7FF1906B20E003524B1 /* InfoPlist.strings */; };
 		CBFAA8041906B219003524B1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CBFAA8021906B219003524B1 /* InfoPlist.strings */; };
 		CBFAA8051906B25D003524B1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CB5AAF421900616E004CA461 /* main.m */; };
-		CBFAA8231906B77A003524B1 /* down-still.gif in Resources */ = {isa = PBXBuildFile; fileRef = CBFAA8171906B77A003524B1 /* down-still.gif */; };
-		CBFAA8241906B77A003524B1 /* left-still.gif in Resources */ = {isa = PBXBuildFile; fileRef = CBFAA8181906B77A003524B1 /* left-still.gif */; };
-		CBFAA8251906B77A003524B1 /* right-still.gif in Resources */ = {isa = PBXBuildFile; fileRef = CBFAA8191906B77A003524B1 /* right-still.gif */; };
-		CBFAA8261906B77A003524B1 /* walk-left.atlas in Resources */ = {isa = PBXBuildFile; fileRef = CBFAA81A1906B77A003524B1 /* walk-left.atlas */; };
-		CBFAA8271906B77A003524B1 /* walk-right.atlas in Resources */ = {isa = PBXBuildFile; fileRef = CBFAA81B1906B77A003524B1 /* walk-right.atlas */; };
 		CBFAA82A1906BAA6003524B1 /* AKInventory.m in Sources */ = {isa = PBXBuildFile; fileRef = CBFAA8291906BAA6003524B1 /* AKInventory.m */; };
 		CBFAA82D1906BAC1003524B1 /* AKTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = CBFAA82C1906BAC1003524B1 /* AKTitle.m */; };
 /* End PBXBuildFile section */
@@ -64,6 +62,9 @@
 
 /* Begin PBXFileReference section */
 		CB24860D1908482D00B573BF /* _block.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = _block.png; sourceTree = "<group>"; };
+		CB43CC521909E94600DAE481 /* still.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = still.atlas; sourceTree = "<group>"; };
+		CB43CC531909E94600DAE481 /* walk-e.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "walk-e.atlas"; sourceTree = "<group>"; };
+		CB43CC541909E94600DAE481 /* walk-w.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "walk-w.atlas"; sourceTree = "<group>"; };
 		CB5AAF311900616E004CA461 /* AK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AK.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB5AAF341900616E004CA461 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		CB5AAF361900616E004CA461 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
@@ -105,11 +106,6 @@
 		CBFAA7FD1906ADC1003524B1 /* AK-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "AK-Info.plist"; path = "AK/AK-Info.plist"; sourceTree = SOURCE_ROOT; };
 		CBFAA8001906B20E003524B1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CBFAA8031906B219003524B1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		CBFAA8171906B77A003524B1 /* down-still.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "down-still.gif"; sourceTree = "<group>"; };
-		CBFAA8181906B77A003524B1 /* left-still.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "left-still.gif"; sourceTree = "<group>"; };
-		CBFAA8191906B77A003524B1 /* right-still.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "right-still.gif"; sourceTree = "<group>"; };
-		CBFAA81A1906B77A003524B1 /* walk-left.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "walk-left.atlas"; sourceTree = "<group>"; };
-		CBFAA81B1906B77A003524B1 /* walk-right.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "walk-right.atlas"; sourceTree = "<group>"; };
 		CBFAA8281906BAA6003524B1 /* AKInventory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKInventory.h; sourceTree = "<group>"; };
 		CBFAA8291906BAA6003524B1 /* AKInventory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKInventory.m; sourceTree = "<group>"; };
 		CBFAA82B1906BAC1003524B1 /* AKTitle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKTitle.h; sourceTree = "<group>"; };
@@ -139,6 +135,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CB43CC511909E94600DAE481 /* hero */ = {
+			isa = PBXGroup;
+			children = (
+				CB43CC521909E94600DAE481 /* still.atlas */,
+				CB43CC531909E94600DAE481 /* walk-e.atlas */,
+				CB43CC541909E94600DAE481 /* walk-w.atlas */,
+			);
+			path = hero;
+			sourceTree = "<group>";
+		};
 		CB5AAF281900616E004CA461 = {
 			isa = PBXGroup;
 			children = (
@@ -283,21 +289,9 @@
 		CBFAA8151906B77A003524B1 /* sprite */ = {
 			isa = PBXGroup;
 			children = (
-				CBFAA8161906B77A003524B1 /* still */,
-				CBFAA81A1906B77A003524B1 /* walk-left.atlas */,
-				CBFAA81B1906B77A003524B1 /* walk-right.atlas */,
+				CB43CC511909E94600DAE481 /* hero */,
 			);
 			path = sprite;
-			sourceTree = "<group>";
-		};
-		CBFAA8161906B77A003524B1 /* still */ = {
-			isa = PBXGroup;
-			children = (
-				CBFAA8171906B77A003524B1 /* down-still.gif */,
-				CBFAA8181906B77A003524B1 /* left-still.gif */,
-				CBFAA8191906B77A003524B1 /* right-still.gif */,
-			);
-			path = still;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -378,27 +372,25 @@
 			files = (
 				CB84BE4419082DE700169C4F /* LFCGzipUtility.m in Resources */,
 				CB84BE251906CAD100169C4F /* 1.plist in Resources */,
-				CBFAA8271906B77A003524B1 /* walk-right.atlas in Resources */,
 				CB84BE2D1906D2E100169C4F /* look.png in Resources */,
 				CBFAA8011906B20E003524B1 /* InfoPlist.strings in Resources */,
 				CB84BE3F19082DD900169C4F /* JSTileMap.h in Resources */,
 				CB84BE321906D8DC00169C4F /* 1.mp3 in Resources */,
-				CBFAA8241906B77A003524B1 /* left-still.gif in Resources */,
 				CB84BE4019082DD900169C4F /* JSTileMap.m in Resources */,
 				CB84BE4A19082DF300169C4F /* HUMAStarPathfinder.m in Resources */,
 				CB84BE4319082DE700169C4F /* LFCGzipUtility.h in Resources */,
 				CB84BE4919082DF300169C4F /* HUMAStarPathfinder.h in Resources */,
-				CBFAA8261906B77A003524B1 /* walk-left.atlas in Resources */,
+				CB43CC561909E94600DAE481 /* walk-e.atlas in Resources */,
 				CB84BE4B19082DF300169C4F /* HUMAStarPathfinderNode.h in Resources */,
 				CB5AAF531900616E004CA461 /* Images.xcassets in Resources */,
 				CB84BE261906CAD100169C4F /* 1.png in Resources */,
-				CBFAA8251906B77A003524B1 /* right-still.gif in Resources */,
 				CB84BE301906D2E100169C4F /* walk.png in Resources */,
 				CB5AAF491900616E004CA461 /* MainMenu.xib in Resources */,
 				CB84BE2F1906D2E100169C4F /* wait.png in Resources */,
-				CBFAA8231906B77A003524B1 /* down-still.gif in Resources */,
 				CB84BE3C19082CEE00169C4F /* 1.tmx in Resources */,
+				CB43CC571909E94600DAE481 /* walk-w.atlas in Resources */,
 				CB84BE2C1906D2E100169C4F /* default.png in Resources */,
+				CB43CC551909E94600DAE481 /* still.atlas in Resources */,
 				CB84BE2E1906D2E100169C4F /* touch.png in Resources */,
 				CB84BE4C19082DF300169C4F /* HUMAStarPathfinderNode.m in Resources */,
 				CB24860E1908482E00B573BF /* _block.png in Resources */,
