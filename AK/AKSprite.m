@@ -180,7 +180,7 @@
             
             // Add action to change direction. We do this in a block do that it doesn't block the queue of
             // subsequent paths from executing.
-            SKAction *walkAnimate = [SKAction animateWithTextures:walkFrames timePerFrame:0.1f resize:NO restore:YES];
+            SKAction *walkAnimate = [SKAction animateWithTextures:walkFrames timePerFrame:0.13f resize:NO restore:YES];
             SKAction *changeDirection = [SKAction runBlock:^{
                 [_sprite runAction:[SKAction repeatActionForever:walkAnimate] withKey:@"Move_Sprite_Animation"];
             }];

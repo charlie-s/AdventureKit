@@ -62,7 +62,24 @@
     // Load scene plist.
     NSString * path = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%i", number] ofType:@"plist"];
     _plist = [NSDictionary dictionaryWithContentsOfFile:path];
-
+    
+    // Add animations.
+    // @todo add via plist
+    SKTextureAtlas *animAtlas = [SKTextureAtlas atlasNamed:@"1_anim_left_candle"];
+    NSMutableArray *animFrames = [NSMutableArray array];
+    [animFrames addObject:[animAtlas textureNamed:@"1"]];
+    [animFrames addObject:[animAtlas textureNamed:@"2"]];
+    [animFrames addObject:[animAtlas textureNamed:@"3"]];
+    [animFrames addObject:[animAtlas textureNamed:@"4"]];
+    [animFrames addObject:[animAtlas textureNamed:@"3"]];
+    [animFrames addObject:[animAtlas textureNamed:@"2"]];
+    SKAction *animateLeftCandle = [SKAction animateWithTextures:animFrames timePerFrame:0.1f resize:NO restore:YES];
+    SKSpriteNode *leftCandle = [SKSpriteNode spriteNodeWithTexture:[animAtlas textureNamed:@"1"]];
+    leftCandle.position = CGPointMake(227, 337);
+    leftCandle.zPosition = -1;
+    [self addChild:leftCandle];
+    [leftCandle runAction:[SKAction repeatActionForever:animateLeftCandle] withKey:@"Animate_Candle"];
+    
     // Remove the old tilemap
     // @todo there has to be an easier way to remove / replace old objects?
     SKNode *oldTileMap = [self.scene childNodeWithName:@"tilemap"];

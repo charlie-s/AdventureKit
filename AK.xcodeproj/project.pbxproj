@@ -43,6 +43,7 @@
 		CB84BE4E19082FB800169C4F /* HUMAStarPathfinderNode.m in Sources */ = {isa = PBXBuildFile; fileRef = CB84BE4819082DF300169C4F /* HUMAStarPathfinderNode.m */; };
 		CB84BE4F19082FB800169C4F /* LFCGzipUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = CB84BE4219082DE700169C4F /* LFCGzipUtility.m */; };
 		CB84BE5019082FB800169C4F /* JSTileMap.m in Sources */ = {isa = PBXBuildFile; fileRef = CB84BE3E19082DD900169C4F /* JSTileMap.m */; };
+		CB94083E190C163B0049B773 /* 1_anim_left_candle.atlas in Resources */ = {isa = PBXBuildFile; fileRef = CB94083D190C163B0049B773 /* 1_anim_left_candle.atlas */; };
 		CBE24CF3190B237E00E6C152 /* _portal.png in Resources */ = {isa = PBXBuildFile; fileRef = CBE24CF2190B237E00E6C152 /* _portal.png */; };
 		CBE24CF5190C01E800E6C152 /* 2.plist in Resources */ = {isa = PBXBuildFile; fileRef = CBE24CF4190C01E800E6C152 /* 2.plist */; };
 		CBE24CF8190C02D200E6C152 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = CBE24CF6190C02D200E6C152 /* 2.png */; };
@@ -105,6 +106,7 @@
 		CB84BE4619082DF300169C4F /* HUMAStarPathfinder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HUMAStarPathfinder.m; path = HUMAStarPathfinder/HUMAStarPathfinder.m; sourceTree = "<group>"; };
 		CB84BE4719082DF300169C4F /* HUMAStarPathfinderNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HUMAStarPathfinderNode.h; path = HUMAStarPathfinder/HUMAStarPathfinderNode.h; sourceTree = "<group>"; };
 		CB84BE4819082DF300169C4F /* HUMAStarPathfinderNode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HUMAStarPathfinderNode.m; path = HUMAStarPathfinder/HUMAStarPathfinderNode.m; sourceTree = "<group>"; };
+		CB94083D190C163B0049B773 /* 1_anim_left_candle.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = 1_anim_left_candle.atlas; sourceTree = "<group>"; };
 		CBE24CF2190B237E00E6C152 /* _portal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = _portal.png; sourceTree = "<group>"; };
 		CBE24CF4190C01E800E6C152 /* 2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = 2.plist; sourceTree = "<group>"; };
 		CBE24CF6190C02D200E6C152 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
@@ -276,6 +278,7 @@
 		CBFAA8131906B77A003524B1 /* scene */ = {
 			isa = PBXGroup;
 			children = (
+				CB94083D190C163B0049B773 /* 1_anim_left_candle.atlas */,
 				CB24860D1908482D00B573BF /* _block.png */,
 				CBE24CF2190B237E00E6C152 /* _portal.png */,
 				CB84BE3B19082CEE00169C4F /* 1.tmx */,
@@ -383,6 +386,7 @@
 				CB84BE4A19082DF300169C4F /* HUMAStarPathfinder.m in Resources */,
 				CB84BE4319082DE700169C4F /* LFCGzipUtility.h in Resources */,
 				CB84BE4919082DF300169C4F /* HUMAStarPathfinder.h in Resources */,
+				CB94083E190C163B0049B773 /* 1_anim_left_candle.atlas in Resources */,
 				CB43CC561909E94600DAE481 /* walk-e.atlas in Resources */,
 				CB84BE4B19082DF300169C4F /* HUMAStarPathfinderNode.h in Resources */,
 				CB5AAF531900616E004CA461 /* Images.xcassets in Resources */,
