@@ -6,11 +6,11 @@
   </tile>
  </tileset>
  <imagelayer name="background">
-  <image source="1.png"/>
+  <image source="2.png"/>
  </imagelayer>
  <layer name="block" width="60" height="34">
   <data encoding="base64" compression="zlib">
-   eJzt1GEOABAMg1Huf2nZCYisdHwv8XdaRGsAAAAAAABzPWG5UWd1O5Pbd3By/9tdw8k7dugbdnJU/ksqZ4fGC+9Bld+5b6W5GRTZfurr3DXQ12OWCn09Zimt5Bx0MABq
+   eJztwTEBAAAAwqD1T20ND6AAAAAAAAAAgHcDH+AAAQ==
   </data>
  </layer>
 </map>

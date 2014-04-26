@@ -88,6 +88,9 @@
  */
 -(void)moveTo:(CGPoint)point
 {
+    NSLog(@"AKSprite moveTo %@", NSStringFromPoint(point));
+    [_sprite removeActionForKey: @"Move_Sprite"];
+    [_sprite removeActionForKey: @"Move_Sprite_Animation"];
     _sprite.position = point;
 }
 
@@ -187,10 +190,10 @@
         
         // Listen for portal hit. If hit, send message to parent.
 
-        JSTileMap *tileMap = [_scene getTileMap];
-        TMXLayer *meta = [tileMap layerNamed:@"portal"];
-        SKSpriteNode *tile = [meta tileAt:currentCGPoint];
-//        NSLog(@"tile:");
+//        JSTileMap *tileMap = [_scene getTileMap];
+//        TMXLayer *meta = [tileMap layerNamed:@"block"];
+//        SKSpriteNode *tile = [meta tileAt:currentCGPoint];
+//        NSLog(@"tile:%@", tile);
 //        NSLog(@"%@", tile);
 //        if (TRUE) {
 //            NSLog(@"Portal hit!");

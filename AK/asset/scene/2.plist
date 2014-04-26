@@ -3,25 +3,25 @@
 <plist version="1.0">
 <dict>
 	<key>name</key>
-	<string>Hallway</string>
+	<string>Dining Room</string>
 	<key>action</key>
 	<dict>
 		<key>look</key>
-		<string>It looks like a hallway.</string>
+		<string>It looks like a dining room.</string>
 		<key>touch</key>
-		<string>It feels like a hallway.</string>
+		<string>It feels like a dining room.</string>
 	</dict>
 	<key>portal</key>
 	<array>
 		<dict>
 			<key>point</key>
-			<string>{800, 160}</string>
+			<string>{8,140}</string>
 			<key>size</key>
 			<string>{16, 32}</string>
 			<key>screen</key>
-			<string>2</string>
+			<string>1</string>
 			<key>destination</key>
-			<string>{20, 100}</string>
+			<string>{700, 160}</string>
 		</dict>
 	</array>
 </dict>

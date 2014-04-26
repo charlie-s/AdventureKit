@@ -44,6 +44,9 @@
 		CB84BE4F19082FB800169C4F /* LFCGzipUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = CB84BE4219082DE700169C4F /* LFCGzipUtility.m */; };
 		CB84BE5019082FB800169C4F /* JSTileMap.m in Sources */ = {isa = PBXBuildFile; fileRef = CB84BE3E19082DD900169C4F /* JSTileMap.m */; };
 		CBE24CF3190B237E00E6C152 /* _portal.png in Resources */ = {isa = PBXBuildFile; fileRef = CBE24CF2190B237E00E6C152 /* _portal.png */; };
+		CBE24CF5190C01E800E6C152 /* 2.plist in Resources */ = {isa = PBXBuildFile; fileRef = CBE24CF4190C01E800E6C152 /* 2.plist */; };
+		CBE24CF8190C02D200E6C152 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = CBE24CF6190C02D200E6C152 /* 2.png */; };
+		CBE24CF9190C02D200E6C152 /* 2.tmx in Resources */ = {isa = PBXBuildFile; fileRef = CBE24CF7190C02D200E6C152 /* 2.tmx */; };
 		CBFAA8011906B20E003524B1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CBFAA7FF1906B20E003524B1 /* InfoPlist.strings */; };
 		CBFAA8041906B219003524B1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CBFAA8021906B219003524B1 /* InfoPlist.strings */; };
 		CBFAA8051906B25D003524B1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CB5AAF421900616E004CA461 /* main.m */; };
@@ -103,6 +106,9 @@
 		CB84BE4719082DF300169C4F /* HUMAStarPathfinderNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HUMAStarPathfinderNode.h; path = HUMAStarPathfinder/HUMAStarPathfinderNode.h; sourceTree = "<group>"; };
 		CB84BE4819082DF300169C4F /* HUMAStarPathfinderNode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HUMAStarPathfinderNode.m; path = HUMAStarPathfinder/HUMAStarPathfinderNode.m; sourceTree = "<group>"; };
 		CBE24CF2190B237E00E6C152 /* _portal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = _portal.png; sourceTree = "<group>"; };
+		CBE24CF4190C01E800E6C152 /* 2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = 2.plist; sourceTree = "<group>"; };
+		CBE24CF6190C02D200E6C152 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
+		CBE24CF7190C02D200E6C152 /* 2.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = 2.tmx; sourceTree = "<group>"; };
 		CBFAA7FD1906ADC1003524B1 /* AK-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "AK-Info.plist"; path = "AK/AK-Info.plist"; sourceTree = SOURCE_ROOT; };
 		CBFAA8001906B20E003524B1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CBFAA8031906B219003524B1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -275,6 +281,9 @@
 				CB84BE3B19082CEE00169C4F /* 1.tmx */,
 				CB84BE231906CAD100169C4F /* 1.plist */,
 				CB84BE241906CAD100169C4F /* 1.png */,
+				CBE24CF4190C01E800E6C152 /* 2.plist */,
+				CBE24CF6190C02D200E6C152 /* 2.png */,
+				CBE24CF7190C02D200E6C152 /* 2.tmx */,
 			);
 			path = scene;
 			sourceTree = "<group>";
@@ -365,6 +374,7 @@
 			files = (
 				CB84BE4419082DE700169C4F /* LFCGzipUtility.m in Resources */,
 				CB84BE251906CAD100169C4F /* 1.plist in Resources */,
+				CBE24CF9190C02D200E6C152 /* 2.tmx in Resources */,
 				CB84BE2D1906D2E100169C4F /* look.png in Resources */,
 				CBFAA8011906B20E003524B1 /* InfoPlist.strings in Resources */,
 				CB84BE3F19082DD900169C4F /* JSTileMap.h in Resources */,
@@ -378,6 +388,8 @@
 				CB5AAF531900616E004CA461 /* Images.xcassets in Resources */,
 				CB84BE261906CAD100169C4F /* 1.png in Resources */,
 				CB84BE301906D2E100169C4F /* walk.png in Resources */,
+				CBE24CF8190C02D200E6C152 /* 2.png in Resources */,
+				CBE24CF5190C01E800E6C152 /* 2.plist in Resources */,
 				CB5AAF491900616E004CA461 /* MainMenu.xib in Resources */,
 				CB84BE2F1906D2E100169C4F /* wait.png in Resources */,
 				CB84BE3C19082CEE00169C4F /* 1.tmx in Resources */,

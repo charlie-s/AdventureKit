@@ -22,6 +22,9 @@
     int _activeCursor;
     NSString *_activeCursorImage;
     bool _clickCanResume;
+    
+    AKSprite *_hero;
+    SKSpriteNode *_portal;
 
     NSDictionary *_plist;
 }
@@ -33,15 +36,16 @@
 {
     if (self = [super initWithSize:size])
     {
+        // Load hero sprite.
+        _hero = [[AKSprite alloc] initIntoScene:self];
+        // Set hero position.
+        [_hero setDirectionFacing:@"left"];
+        [_hero moveTo:CGPointMake(480, 200)];
+        [self addChild:_hero];
+        
         // Load the current screen.
         _currentScreen = 1;
-        [self loadSceneNumber:_currentScreen];
-        
-        // Set hero sprite.
-        self.hero = [[AKSprite alloc] initIntoScene:self];
-        [self.hero setDirectionFacing:@"left"];
-        [self.hero moveTo:CGPointMake(600, 200)];
-        [self addChild:self.hero];
+        [self loadScreenNumber:_currentScreen];
     }
     
     return self;
@@ -50,20 +54,46 @@
 /**
  * Load the given scene number.
  */
--(void)loadSceneNumber:(int)number
+-(void)loadScreenNumber:(int)number
 {
     NSLog(@"Loading scene #%i.", number);
+    _currentScreen = number;
     
     // Load scene plist.
     NSString * path = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%i", number] ofType:@"plist"];
     _plist = [NSDictionary dictionaryWithContentsOfFile:path];
+
+    // Remove the old tilemap
+    // @todo there has to be an easier way to remove / replace old objects?
+    SKNode *oldTileMap = [self.scene childNodeWithName:@"tilemap"];
+    if (oldTileMap) {
+        [oldTileMap removeFromParent];
+    }
     
     // Load the tilemap.
     self.tileMap = [JSTileMap mapNamed:[NSString stringWithFormat:@"%i.tmx", number]];
+    self.tileMap.name = @"tilemap";
     [self addChild:self.tileMap];
     
     // Initialize HUMAStarPathfinder.
     self.pathfinder = [HUMAStarPathfinder pathfinderWithTileMapSize:self.tileMap.mapSize tileSize:self.tileMap.tileSize delegate:self];
+    
+    // Load portals.
+    // @todo add to array of portals
+    for (id object in [_plist valueForKey:@"portal"]) {
+        NSPoint portalPoint = NSPointFromString([object valueForKey:@"point"]);
+        NSSize portalSize = NSSizeFromString([object valueForKey:@"size"]);
+        
+        _portal = [SKSpriteNode spriteNodeWithColor:[SKColor greenColor] size:portalSize];
+        _portal.position = portalPoint;
+        _portal.name = @"portal";
+        
+        _portal.userData = [NSMutableDictionary dictionary];
+        [_portal.userData setValue:[object valueForKey:@"screen"] forKey:@"screen"];
+        [_portal.userData setValue:[object valueForKey:@"destination"] forKey:@"destination"];
+        
+        [self addChild:_portal];
+    }
 }
 
 -(JSTileMap*)getTileMap
@@ -225,10 +255,10 @@
      */
     if (_activeCursor == 1) {;
         // Calculate the fastest path using HUMAStarPathfinder.
-        NSArray *walkPath = [self.pathfinder findPathFromStart:self.hero.getPosition toTarget:location];
+        NSArray *walkPath = [self.pathfinder findPathFromStart:_hero.getPosition toTarget:location];
         
         // Walk the hero.
-        [self.hero walkTo:walkPath];
+        [_hero walkTo:walkPath];
     }
     
     /**
@@ -267,6 +297,16 @@
     }
     
     [self updateCursor];
+    
+    // Check for portal hit.
+    NSArray *nodesAtPoint = [self nodesAtPoint:[_hero getPosition]];
+    for (SKNode *node in nodesAtPoint) {
+        if ([node.name isEqualToString:@"portal"]) {
+            [_hero moveTo:NSPointFromString([_portal.userData objectForKey:@"destination"])];
+            NSString *screenNumber = [_portal.userData objectForKey:@"screen"];
+            [self loadScreenNumber:[screenNumber intValue]];
+        }
+    }
 }
 
 @end

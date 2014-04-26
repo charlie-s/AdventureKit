@@ -10,7 +10,7 @@
 
 @interface AKScene : SKScene <HUMAStarPathfinderDelegate>
 
--(void)loadSceneNumber:(int)number;
+-(void)loadScreenNumber:(int)number;
 -(JSTileMap*)getTileMap;
 
 @property NSInteger *cursorWait;
