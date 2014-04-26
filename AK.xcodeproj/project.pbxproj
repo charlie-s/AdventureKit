@@ -28,7 +28,6 @@
 		CB84BE2E1906D2E100169C4F /* touch.png in Resources */ = {isa = PBXBuildFile; fileRef = CB84BE291906D2E100169C4F /* touch.png */; };
 		CB84BE2F1906D2E100169C4F /* wait.png in Resources */ = {isa = PBXBuildFile; fileRef = CB84BE2A1906D2E100169C4F /* wait.png */; };
 		CB84BE301906D2E100169C4F /* walk.png in Resources */ = {isa = PBXBuildFile; fileRef = CB84BE2B1906D2E100169C4F /* walk.png */; };
-		CB84BE321906D8DC00169C4F /* 1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CB84BE311906D8DC00169C4F /* 1.mp3 */; };
 		CB84BE3A19082A4500169C4F /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CB84BE3919082A4500169C4F /* libz.dylib */; };
 		CB84BE3C19082CEE00169C4F /* 1.tmx in Resources */ = {isa = PBXBuildFile; fileRef = CB84BE3B19082CEE00169C4F /* 1.tmx */; };
 		CB84BE3F19082DD900169C4F /* JSTileMap.h in Resources */ = {isa = PBXBuildFile; fileRef = CB84BE3D19082DD900169C4F /* JSTileMap.h */; };
@@ -44,6 +43,7 @@
 		CB84BE4F19082FB800169C4F /* LFCGzipUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = CB84BE4219082DE700169C4F /* LFCGzipUtility.m */; };
 		CB84BE5019082FB800169C4F /* JSTileMap.m in Sources */ = {isa = PBXBuildFile; fileRef = CB84BE3E19082DD900169C4F /* JSTileMap.m */; };
 		CB94083E190C163B0049B773 /* 1_anim_left_candle.atlas in Resources */ = {isa = PBXBuildFile; fileRef = CB94083D190C163B0049B773 /* 1_anim_left_candle.atlas */; };
+		CB940840190C19C60049B773 /* house.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CB94083F190C19C60049B773 /* house.mp3 */; };
 		CBE24CF3190B237E00E6C152 /* _portal.png in Resources */ = {isa = PBXBuildFile; fileRef = CBE24CF2190B237E00E6C152 /* _portal.png */; };
 		CBE24CF5190C01E800E6C152 /* 2.plist in Resources */ = {isa = PBXBuildFile; fileRef = CBE24CF4190C01E800E6C152 /* 2.plist */; };
 		CBE24CF8190C02D200E6C152 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = CBE24CF6190C02D200E6C152 /* 2.png */; };
@@ -95,7 +95,6 @@
 		CB84BE291906D2E100169C4F /* touch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = touch.png; sourceTree = "<group>"; };
 		CB84BE2A1906D2E100169C4F /* wait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wait.png; sourceTree = "<group>"; };
 		CB84BE2B1906D2E100169C4F /* walk.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = walk.png; sourceTree = "<group>"; };
-		CB84BE311906D8DC00169C4F /* 1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 1.mp3; sourceTree = "<group>"; };
 		CB84BE3919082A4500169C4F /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		CB84BE3B19082CEE00169C4F /* 1.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = 1.tmx; sourceTree = "<group>"; };
 		CB84BE3D19082DD900169C4F /* JSTileMap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = JSTileMap.h; path = JSTileMap/JSTileMap.h; sourceTree = "<group>"; };
@@ -107,6 +106,7 @@
 		CB84BE4719082DF300169C4F /* HUMAStarPathfinderNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HUMAStarPathfinderNode.h; path = HUMAStarPathfinder/HUMAStarPathfinderNode.h; sourceTree = "<group>"; };
 		CB84BE4819082DF300169C4F /* HUMAStarPathfinderNode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HUMAStarPathfinderNode.m; path = HUMAStarPathfinder/HUMAStarPathfinderNode.m; sourceTree = "<group>"; };
 		CB94083D190C163B0049B773 /* 1_anim_left_candle.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = 1_anim_left_candle.atlas; sourceTree = "<group>"; };
+		CB94083F190C19C60049B773 /* house.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = house.mp3; sourceTree = "<group>"; };
 		CBE24CF2190B237E00E6C152 /* _portal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = _portal.png; sourceTree = "<group>"; };
 		CBE24CF4190C01E800E6C152 /* 2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = 2.plist; sourceTree = "<group>"; };
 		CBE24CF6190C02D200E6C152 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
@@ -270,7 +270,7 @@
 		CBFAA8111906B77A003524B1 /* music */ = {
 			isa = PBXGroup;
 			children = (
-				CB84BE311906D8DC00169C4F /* 1.mp3 */,
+				CB94083F190C19C60049B773 /* house.mp3 */,
 			);
 			path = music;
 			sourceTree = "<group>";
@@ -381,7 +381,7 @@
 				CB84BE2D1906D2E100169C4F /* look.png in Resources */,
 				CBFAA8011906B20E003524B1 /* InfoPlist.strings in Resources */,
 				CB84BE3F19082DD900169C4F /* JSTileMap.h in Resources */,
-				CB84BE321906D8DC00169C4F /* 1.mp3 in Resources */,
+				CB940840190C19C60049B773 /* house.mp3 in Resources */,
 				CB84BE4019082DD900169C4F /* JSTileMap.m in Resources */,
 				CB84BE4A19082DF300169C4F /* HUMAStarPathfinder.m in Resources */,
 				CB84BE4319082DE700169C4F /* LFCGzipUtility.h in Resources */,

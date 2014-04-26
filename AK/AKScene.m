@@ -19,13 +19,12 @@
 @implementation AKScene
 {
     int _currentScreen;
+    NSString *_currentMusic;
     int _activeCursor;
     NSString *_activeCursorImage;
     bool _clickCanResume;
-    
     AKSprite *_hero;
     SKSpriteNode *_portal;
-
     NSDictionary *_plist;
 }
 
@@ -52,6 +51,25 @@
 }
 
 /**
+ * Update the scene music.
+ */
+-(void)updateMusic:(NSString*)musicName
+{
+    // If music doesn't change, do nothing.
+    if ([_currentMusic isEqualToString:musicName]) {
+        return;
+    }
+    
+    // If music does change, fade out the old
+    // @todo
+    
+    // Start new music.
+    _currentMusic = musicName;
+    NSString *musicFile = [NSString stringWithFormat:@"%@.mp3", _currentMusic];
+    [self.scene runAction:[SKAction playSoundFileNamed:musicFile waitForCompletion:NO]];
+}
+
+/**
  * Load the given scene number.
  */
 -(void)loadScreenNumber:(int)number
@@ -62,6 +80,9 @@
     // Load scene plist.
     NSString * path = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%i", number] ofType:@"plist"];
     _plist = [NSDictionary dictionaryWithContentsOfFile:path];
+    
+    // Load music.
+    [self updateMusic:[_plist valueForKey:@"music"]];
     
     // Add animations.
     // @todo add via plist
